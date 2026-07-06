@@ -31,9 +31,7 @@
 
   /* hero with radio-wave arcs */
   .hero{position:relative;max-width:var(--max);margin:0 auto;padding:96px 24px 90px;overflow:hidden}
-  .hero-arcs{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:520px;height:520px;pointer-events:none;opacity:.55}
-  .hero-arcs circle{fill:none;stroke:var(--line);stroke-width:1}
-  .hero-arcs .dot{fill:var(--accent);stroke:none}
+  .hero-arcs{position:absolute;right:30px;top:50%;transform:translateY(-50%);height:440px;width:auto;pointer-events:none;opacity:.6}
   .hero-eyebrow{font-size:11.5px;letter-spacing:.26em;color:var(--accent);margin-bottom:22px}
   .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(27px,4.4vw,42px);line-height:1.65;color:var(--green-deep);letter-spacing:.04em;margin-bottom:26px;position:relative}
   .hero p{max-width:36em;color:#454b50;font-size:15px;position:relative}
