@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新入生へ | 芝浦工業大学 無線信号処理研究室</title>
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="jp">無線信号処理研究室</span><span class="en">Wireless Signal Processing Lab</span>
+      <small><span class="jp">芝浦工業大学（菅研究室）</span><span class="en">Shibaura Institute of Technology — Suga Lab</span></small>
+    </a>
+    <button class="menu-btn" aria-label="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="research.html"><span class="jp">研究内容</span><span class="en">Research</span></a>
+      <a href="members.html"><span class="jp">メンバー</span><span class="en">Members</span></a>
+      <a href="publications.html"><span class="jp">研究業績</span><span class="en">Publications</span></a>
+      <a href="newcomers.html" class="active"><span class="jp">新入生へ</span><span class="en">For Newcomers</span></a>
+      <button class="lang-btn" onclick="toggleLang()"><span class="jp">English</span><span class="en">日本語</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="page-head">
+    <div class="ph-en">FOR NEWCOMERS</div>
+    <h1><span class="jp">新入生へ</span><span class="en">For Newcomers</span></h1>
+  </div>
+
+  <section class="reveal">
+    <div class="intro-msg">
+      <span class="jp">菅研究室では、学部生の間に<strong>「一人1回は学会発表を行うこと」</strong>を大きな目標としています。充実したサポート体制のもと、以下のスケジュールで研究を進めていきます。</span>
+      <span class="en">At Suga Lab, our major goal is for <strong>every undergraduate student to give at least one conference presentation</strong>. With a well-organized support system, research proceeds according to the schedule below.</span>
+    </div>
+
+    <h2 class="sub-head"><span class="jp">学部生の研究スケジュール</span><span class="en">Research Schedule for Undergraduates</span></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-period"><span class="jp">1月〜5月</span><span class="en">Jan. – May</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">初期検討</span><span class="en">Initial Study</span></h3>
+          <p><span class="jp">基礎勉強、既存研究のサーベイ、実装</span><span class="en">Fundamentals, survey of existing research, and implementation</span></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period"><span class="jp">5月〜7月</span><span class="en">May – Jul.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">提案手法の実装・検証</span><span class="en">Implementation &amp; Evaluation of Proposed Method</span></h3>
+          <p><span class="jp">自分のアイデアを形にして、シミュレーション等で検証します</span><span class="en">Turn your ideas into working code and verify them through simulations</span></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period"><span class="jp">7月</span><span class="en">Jul.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">発表準備</span><span class="en">Presentation Preparation</span></h3>
+          <p><span class="jp">スライド作成・発表練習を行います</span><span class="en">Prepare slides and practice your presentation</span></p>
+        </div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-period"><span class="jp">8月</span><span class="en">Aug.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">中間発表</span><span class="en">Midterm Presentation</span></h3>
+          <p><span class="jp">前半の研究成果を発表します</span><span class="en">Present the results of the first half of your research</span></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period"><span class="jp">8月〜11月</span><span class="en">Aug. – Nov.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">改良検討・追加実験</span><span class="en">Refinement &amp; Additional Experiments</span></h3>
+          <p><span class="jp">中間発表でのフィードバックをもとに手法を磨き上げます</span><span class="en">Refine your method based on feedback from the midterm presentation</span></p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-period"><span class="jp">11月〜1月</span><span class="en">Nov. – Jan.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">論文作成・学会発表準備</span><span class="en">Paper Writing &amp; Conference Preparation</span></h3>
+          <p><span class="jp">卒業論文と学会発表原稿を執筆します</span><span class="en">Write your graduation thesis and conference manuscript</span></p>
+        </div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-period"><span class="jp">2月</span><span class="en">Feb.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">卒研発表</span><span class="en">Graduation Thesis Presentation</span></h3>
+          <p><span class="jp">1年間の研究の集大成を発表します</span><span class="en">Present the culmination of your year of research</span></p>
+        </div>
+      </div>
+      <div class="tl-item milestone">
+        <div class="tl-period"><span class="jp">2月〜3月</span><span class="en">Feb. – Mar.</span></div>
+        <div class="tl-body">
+          <h3><span class="jp">学会発表（国内・海外）</span><span class="en">Conference Presentations (Domestic &amp; International)</span></h3>
+          <p><span class="jp">国内の研究会や、ハワイ・マレーシアなどで開催される国際会議で発表します</span><span class="en">Present at domestic workshops and international conferences held in Hawaii, Malaysia, and beyond</span></p>
+          <figure class="photo-fig tl-photo">
+            <img src="dummy.jpg" alt="ハワイでの学会発表">
+            <figcaption><span class="jp">国際会議 NCSP（ハワイ）での学会発表の様子</span><span class="en">Presenting at NCSP in Hawaii</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sub-head"><span class="jp">年間イベント</span><span class="en">Annual Events</span></h2>
+    <div class="event-grid">
+      <div class="ev-card">
+        <div class="ev-month"><span class="jp">4月</span><span class="en">APR.</span></div>
+        <h3><span class="jp">新入生歓迎会</span><span class="en">Welcome Party</span></h3>
+      </div>
+      <div class="ev-card">
+        <div class="ev-month"><span class="jp">8月</span><span class="en">AUG.</span></div>
+        <h3>BBQ</h3>
+      </div>
+      <div class="ev-card">
+        <div class="ev-month"><span class="jp">9月</span><span class="en">SEP.</span></div>
+        <h3><span class="jp">夏合宿</span><span class="en">Summer Camp</span></h3>
+      </div>
+      <div class="ev-card">
+        <div class="ev-month"><span class="jp">12月</span><span class="en">DEC.</span></div>
+        <h3><span class="jp">忘年会</span><span class="en">Year-End Party</span></h3>
+      </div>
+    </div>
+
+    <h2 class="sub-head"><span class="jp">フォトギャラリー</span><span class="en">Photo Gallery</span></h2>
+    <div class="photo-grid">
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="ハワイでの学会発表">
+        <figcaption><span class="jp">海外での学会発表（ハワイ）</span><span class="en">Conference presentation in Hawaii</span></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="フランスでの学会発表">
+        <figcaption><span class="jp">海外での学会発表（フランス）</span><span class="en">Conference presentation in France</span></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="ゼミ合宿の風景">
+        <figcaption><span class="jp">ゼミ合宿の風景</span><span class="en">Lab retreat</span></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="新入生歓迎会の様子">
+        <figcaption><span class="jp">新入生歓迎会の様子</span><span class="en">Welcome party</span></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="BBQの様子">
+        <figcaption><span class="jp">BBQの様子</span><span class="en">Lab BBQ</span></figcaption>
+      </figure>
+      <figure class="photo-fig">
+        <img src="dummy.jpg" alt="忘年会の様子">
+        <figcaption><span class="jp">忘年会の様子</span><span class="en">Year-end party</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand"><span class="jp">芝浦工業大学 無線信号処理研究室（菅研究室）</span><span class="en">Wireless Signal Processing Laboratory, Shibaura Institute of Technology</span></div>
+    <small>&copy; 2026 Wireless Signal Processing Laboratory, Shibaura Institute of Technology.</small>
+  </div>
+</footer>
+</body>
+</html>

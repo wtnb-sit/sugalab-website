@@ -135,3 +135,37 @@
   .page-head{max-width:var(--max);margin:0 auto;padding:56px 24px 0}
   .page-head h1{font-family:var(--serif);font-weight:600;font-size:clamp(24px,3.6vw,34px);color:var(--green-deep);letter-spacing:.08em}
   .page-head .ph-en{font-size:11px;letter-spacing:.28em;color:var(--accent);margin-bottom:10px}
+
+  /* ---- for newcomers page ---- */
+  .intro-msg{background:#fff;border:1px solid var(--line);border-left:4px solid var(--green);padding:26px 30px;font-size:15px;color:#454b50;margin-bottom:14px}
+  .intro-msg strong{color:var(--green-deep)}
+
+  .timeline{position:relative;margin:10px 0 10px 8px;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding:0 0 30px 0}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-32px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:3px solid var(--green)}
+  .tl-item.milestone::before{background:var(--accent);border-color:var(--accent)}
+  .tl-period{font-family:var(--serif);font-size:14px;color:var(--accent);letter-spacing:.12em;margin-bottom:4px}
+  .tl-body h3{font-family:var(--serif);font-size:17.5px;color:var(--green-deep);font-weight:600;line-height:1.6}
+  .tl-item.milestone .tl-body h3::after{content:"★";color:var(--accent);font-size:13px;margin-left:8px;vertical-align:2px}
+  .tl-body p{font-size:13.5px;color:#4a4f56;margin-top:4px}
+  .tl-photo{margin-top:14px;max-width:420px}
+
+  .event-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .ev-card{background:#fff;border:1px solid var(--line);padding:22px 20px;text-align:center}
+  .ev-card .ev-month{font-family:var(--serif);font-size:13px;color:var(--accent);letter-spacing:.2em;margin-bottom:8px}
+  .ev-card h3{font-family:var(--serif);font-size:16.5px;color:var(--green-deep);font-weight:600}
+
+  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .photo-fig{margin:0}
+  .photo-fig img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--line);background:repeating-linear-gradient(45deg,#eceae4,#eceae4 12px,#f2f0ea 12px,#f2f0ea 24px)}
+  .photo-fig figcaption{font-size:12.5px;color:var(--mist);margin-top:8px;letter-spacing:.04em}
+
+  .sub-head{font-family:var(--serif);font-size:19px;color:var(--green-deep);font-weight:600;letter-spacing:.08em;margin:52px 0 24px;border-left:4px solid var(--green);padding-left:12px}
+  .sub-head:first-of-type{margin-top:36px}
+
+  @media (max-width:860px){
+    .event-grid{grid-template-columns:repeat(2,1fr)}
+    .photo-grid{grid-template-columns:1fr}
+  }
