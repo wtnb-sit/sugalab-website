@@ -157,10 +157,22 @@
   .ev-card .ev-month{font-family:var(--serif);font-size:13px;color:var(--accent);letter-spacing:.2em;margin-bottom:8px}
   .ev-card h3{font-family:var(--serif);font-size:16.5px;color:var(--green-deep);font-weight:600}
 
-  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .photo-fig{margin:0}
   .photo-fig img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--line);background:repeating-linear-gradient(45deg,#eceae4,#eceae4 12px,#f2f0ea 12px,#f2f0ea 24px)}
   .photo-fig figcaption{font-size:12.5px;color:var(--mist);margin-top:8px;letter-spacing:.04em}
+
+  /* ---- photo slideshow ---- */
+  .slideshow{position:relative;max-width:720px;margin:0 auto}
+  .slideshow .slides{position:relative;border:1px solid var(--line);background:#fff;overflow:hidden}
+  .slideshow .slide{display:none;margin:0}
+  .slideshow .slide.active{display:block;animation:slideFade .8s ease}
+  @keyframes slideFade{from{opacity:0}to{opacity:1}}
+  .slideshow .slide img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:repeating-linear-gradient(45deg,#eceae4,#eceae4 12px,#f2f0ea 12px,#f2f0ea 24px)}
+  .slideshow .slide figcaption{font-family:var(--serif);font-size:14px;color:var(--green-deep);letter-spacing:.06em;text-align:center;padding:12px 16px;border-top:1px solid var(--line)}
+  .slideshow .dots{display:flex;justify-content:center;gap:10px;margin-top:16px}
+  .slideshow .dot{width:9px;height:9px;border-radius:50%;border:1px solid var(--green);background:transparent;cursor:pointer;padding:0;transition:background .2s}
+  .slideshow .dot.active{background:var(--green)}
+  @media (prefers-reduced-motion:reduce){.slideshow .slide.active{animation:none}}
 
   .sub-head{font-family:var(--serif);font-size:19px;color:var(--green-deep);font-weight:600;letter-spacing:.08em;margin:52px 0 24px;border-left:4px solid var(--green);padding-left:12px}
   .sub-head:first-of-type{margin-top:36px}
