@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>研究業績 | 芝浦工業大学 無線信号処理研究室</title>
+<link rel="stylesheet" href="style.css">
+<script src="main.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="index.html">
+      <span class="jp">無線信号処理研究室</span><span class="en">Wireless Signal Processing Lab</span>
+      <small><span class="jp">芝浦工業大学（菅研究室）</span><span class="en">Shibaura Institute of Technology — Suga Lab</span></small>
+    </a>
+    <button class="menu-btn" aria-label="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="research.html"><span class="jp">研究内容</span><span class="en">Research</span></a>
+      <a href="members.html"><span class="jp">メンバー</span><span class="en">Members</span></a>
+      <a href="publications.html" class="active"><span class="jp">研究業績</span><span class="en">Publications</span></a>
+      <button class="lang-btn" onclick="toggleLang()"><span class="jp">English</span><span class="en">日本語</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="page-head">
+    <div class="ph-en">PUBLICATIONS</div>
+    <h1><span class="jp">研究業績</span><span class="en">Publications</span></h1>
+  </div>
+
+<section id="publications" class="reveal">
+    <div class="sec-head"><h2><span class="jp">研究業績</span><span class="en">Publications</span></h2><span>PUBLICATIONS</span></div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" onclick="showTab(event,'journal')">Journal Papers</button>
+      <button class="tab-btn" onclick="showTab(event,'conf')"><span class="jp">国際会議</span><span class="en">Int'l Conferences</span></button>
+      <button class="tab-btn" onclick="showTab(event,'domestic')"><span class="jp">国内発表</span><span class="en">Domestic Talks</span></button>
+      <button class="tab-btn" onclick="showTab(event,'patent')"><span class="jp">特許</span><span class="en">Patents</span></button>
+      <button class="tab-btn" onclick="showTab(event,'award')"><span class="jp">受賞</span><span class="en">Awards</span></button>
+      <button class="tab-btn" onclick="showTab(event,'grant')"><span class="jp">研究費</span><span class="en">Grants</span></button>
+    </div>
+
+    <div class="tab-panel active" id="tab-journal">
+      <ol class="pub-list">
+        <li>N. Suga, R. Sasaki, and K. Matsumoto, "Blind Channel Estimation Using an Image-to-Image Translation Network for OFDM Systems," IEEE Access. (Accepted). [2024 IF: 3.6]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Integration of CSI and Camera Image for Indoor Wireless Localization," IEEE Access. (Accepted). [2024 IF: 3.6]</li>
+        <li>N. Suga, N. Yoshida, R. Gozono, Y. Maeda, and K. Sato, "RGB-D Sensor-Aided Radio Map Estimation Using Materials Classification," IEEE Wireless Communications Letters, vol. 14, no. 6, pp. 1811-1815, Jun. 2025. [2024 IF: 5.5]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Active Element Arrangement for Deep Learning-Based CSI Prediction in IRS-Assisted Systems," IEEE Access, vol. 13, pp. 2829-2843, Dec. 2024. [2024 IF: 3.6]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Image-Driven Reflection Pattern Selection for Standalone IRS Control," IEICE Communications Express, vol. 13, no. 12, pp. 517-520, Dec. 2024. [2024 IF: 0.3]</li>
+        <li>Y. Hou, K. Yano, N. Suga, J. Webber, S. Denno, and T. Sakano, "MUSIC Spectrum Based Interference Detection, Localization and Interference Arrival Prediction for mmWave IRS-MIMO System," IEEE Access, vol. 12, pp. 142592-142605, Oct. 2024. [2024 IF: 3.6]</li>
+        <li>N. Suga, K. Yano, Y. Hou, and T. Sakano, "On Hyperparameter Determination for GPR-Based Channel Prediction in IRS-Assisted Wireless Communication Systems," IEICE Communications Express, vol. 13, no. 8, pp. 315-318, Aug. 2024. [2024 IF: 0.3]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "IRS Reflection Pattern Prediction Considering Receiver's Moving Speed," Journal of Signal Processing, vol. 27, no. 4, pp. 107-110, July 2023.</li>
+        <li>N. Suga, K. Yano, Y. Hou, and T. Sakano, "Study on Channel Prediction in IRS-Assisted Wireless Communication Systems," IEICE Communications Express, vol. 12, no. 7, pp. 374-378, July 2023. [2023 IF: 0.4]</li>
+        <li>N. Suga, Y. Maeda, and K. Sato, "Indoor Radio Map Construction via Ray Tracing With RGB-D Sensor-Based 3D Reconstruction: Concept and Experiments in WLAN Systems," IEEE Access, vol. 11, pp. 24863-24874, Mar. 2023. [2023 IF: 3.4]</li>
+        <li>M. Osawa and N. Suga, "Acceleration of Tensor Interpolation-Based Radio Map Estimation," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E106.A, no. 9, pp. 1263-1267, Sep. 2023. [2023 IF: 0.4]</li>
+        <li>N. Suga and R. Sasaki, "Ray Tracing Acceleration using Rank Minimization for Radio Map Simulation," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E105.A, no. 8, pp. 1157-1161, Aug. 2022. [2022 IF: 0.5]</li>
+        <li>J. Webber, K. Yano, N. Suga, Y. Hou, E. Nii, T. Higashimori, A. Mehbodniya, and Y. Suzuki, "Study on WLAN Interference Identification using Deep Learning for Factory Environments," Journal of Communications, vol. 16, no. 7, pp. 276-283, July 2021.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, E. Nii, T. Higashimori, and Y. Suzuki, "MF-Based RSS Interpolation for Wireless Environment Prediction," IEEE Wireless Communications Letters, vol. 10, no. 7, pp. 1464-1468, July 2021. [2021 IF: 5.3]</li>
+        <li>M. Osawa, N. Suga, and T. Furukawa, "Accelerating Ray Tracing Simulation using Tensor Completion for 3D Radio Map," IEICE Communications Express, vol. 10, no. 5, pp. 283-288, May 2021.</li>
+        <li>N. Suga and T. Furukawa, "Scalar Ambiguity Estimation Based on Maximum Likelihood Criteria for Totally Blind Channel Estimation in Block Transmission Systems," IEEE Transactions on Wireless Communications, vol. 20, no. 4, pp. 2608-2620, Apr. 2021. [2021 IF: 7.016]</li>
+        <li>N. Suga, R. Sasaki, M. Osawa, and T. Furukawa, "Ray Tracing Acceleration using Total Variation Norm Minimization for Radio Map Simulation," IEEE Wireless Communications Letters, vol. 10, no. 3, pp. 522-526, Mar. 2021. [2021 IF: 5.3]</li>
+        <li>J. Webber, N. Suga, A. Mehbodniya, K. Yano, and Y. Suzuki, "Study on Channel Prediction for Automated Guided Vehicle using a Probabilistic Neural Network," IEICE Communications Express, vol. 8, no. 8, pp. 311-317, 2019.</li>
+        <li>N. Suga and T. Furukawa, "Signal power estimation based on orthogonal projection and oblique projection," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E99-A, no. 12, pp. 2571-2575, 2016. [2016 IF: 0.274]</li>
+        <li>N. Suga and T. Furukawa, "On recursive representation of optimum projection matrix," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E99-A, no. 1, pp. 412-416, 2016. [2016 IF: 0.274]</li>
+        <li>菅 宣理，古川 利博，"OFDM方式における信号空間ダイアグラムのシンボル配置を考慮したブラインドチャネル推定法，"電子情報通信学会論文誌B，vol. J98-B，no. 4，pp. 383-396，2015.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Blind channel estimation based on expected value of logarithmic received signal for OFDM systems," IEICE Communications Express, vol. 2, no. 1, pp. 1-6, 2013.</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-conf">
+      <ol class="pub-list">
+        <li>S. Watanabe, N. Suga, "Sparse Radio Map-based Layout Tomographic Reconstruction," Proc. IEEE Vehicular Technology Conference (VTC-Spring), Nice, France, Jun. 2026.</li>
+        <li>S. Nozawa, N. Suga, "Radio Map-to-Beamforming Weight Mapping via Conditional Invertible Neural Networks," Proc. IEEE Vehicular Technology Conference (VTC-Spring), Nice, France, Jun. 2026.</li>
+        <li>Y. Ando, N. Suga, "Model Compression for Deep Learning-Based Channel Estimation Using Knowledge Distillation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026.</li>
+        <li>S. Watanabe, N. Suga, "Estimation of Indoor Structural Information Using Radio Maps," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026.</li>
+        <li>S. Nozawa, N. Suga, "Digital Twin-Aided Beamforming Using Conditional Invertible Neural Networks," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026. <span class="award-mark">[Student Paper Award]</span></li>
+        <li>I. Koido, N. Suga, "Gaussian Process Regression for IRS Channel Estimation in Near-Field Environments," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026. <span class="award-mark">[Student Paper Award]</span></li>
+        <li>K. Okabe, N. Suga, "Projection Approximation Subspace Tracking-Based Channel Estimation for IRS Control," Proc. IEEE Consumer Communications &amp; Networking Conference (CCNC), Las Vegas, NV, USA, 2026, pp. 1-2.</li>
+        <li>H. Somi, N. Suga, "Digital Twin-Aided Fingerprinting for Device-Free RF Sensing," International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), Bandung, Indonesia, 2025, pp. 1-6.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Fisheye Camera-Aided Standalone IRS Control for Transmitter Beamforming," Proc. IEEE Region 10 Conference (TENCON), Kota Kinabalu, Malaysia, 2025, pp. 469-473.</li>
+        <li>H. Sakai, N. Suga, "Study on Blind Channel Estimation Based on Deep Learning for M-PSK Signal," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Pulau Pinang, Malaysia, Feb. to Mar. 2025.</li>
+        <li>T. Itagaki, N. Suga, "Wireless Terminal Localization Using Digital Twin of Indoor Wireless Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Pulau Pinang, Malaysia, Feb. to Mar. 2025.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Active Element Arrangement and Prediction Model for Channel Estimation in IRS-Assisted Systems," in Proc. IEEE Region 10 Conference (TENCON), Dec. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "IRS Controlling Method With Machine Learning Based on Position Information," in Proc. IEEE Global Conference on Consumer Electronics (GCCE), Oct. 2024.</li>
+        <li>N. Suga, "Blind Channel Estimation for Reconfigurable Intelligent Surface Assisted OFDM Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 2024.</li>
+        <li>S. Fujinuma, N. Suga, "USRP-Based CIR Measurement System and Evaluation of CIR Replica from Digital Twin of Wireless Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>I. Ichikawa, N. Suga, "Digital Twin-Aided Bayesian Channel Estimation in Indoor Propagation Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>S. Nakamura, N. Suga, "Training Received Point Reduction Using Predictive Variance of Gaussian Process Regression in Radio Map Estimation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Prediction Model for IRS Channel Estimation Using CNN with Frequency Domain," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "IRS Reflection Pattern Prediction Considering Receiver's Moving Speed," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2023.</li>
+        <li>M. Osawa, N. Suga, Y. Tsuchiya, M. Fujisawa, "3D indoor positioning system using tensor rank minimization based radio map interpolation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2023.</li>
+        <li>Y. Hou, K. Yano, N. Suga, S. Denno, and T. Sakano, "MUSIC Spectrum Based Interference Detection and Localization for mmWave RIS-MIMO System," Proc. 25th International Conference on Advanced Communication Technology (ICACT), Pyeongchang, Republic of Korea, Feb. 2023.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, K. Yano, T. Suzuki, M. Fujisawa, "WLAN throughput prediction using deep learning with throughput, RSS, and COR," Proc. International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), Penang, Malaysia, Nov. 2022.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "LSTM-based Spectral Efficiency Prediction by Capturing Wireless Terminal Movement in IRS-Assisted Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Spring), Helsinki, Finland, Jun. 2022.</li>
+        <li>Y. Hou, K. Yano, N. Suga, J. Webber, E. Nii, T. Higashimori, S. Denno, Y. Suzuki, "A Study of Time-series Data Prediction using Probabilistic Neural Networks and Convolutional Neural Networks," in Proc. IEEE 23rd International Conference on Advanced Communications Technology (ICACT), virtual conference, Feb. 2021.</li>
+        <li>R. Sato, R. Sasaki, N. Suga, and T. Furukawa, "Creation and Analysis of Emotional Speech Database for Multiple Emotions Recognition," in Proc. O-COCOSDA, virtual conference, Nov. 2020. <span class="award-mark">[Best Paper Award]</span></li>
+        <li>N. Suga, R. Sasaki, Y. Tanaka, K. Uruma, and T. Takahashi, "LLR Calculation for On-Off Keying in Screen to Camera Communication Systems," in Proc. 63rd IEEE International Midwest Symposium on Circuits and Systems (MWSCAS), virtual conference, Aug. 2020.</li>
+        <li>Y. Tanaka, K. Uruma, R. Sasaki, N. Suga, and T. Takahashi, "Frame Recovery Method for Screen to Camera Communication Using CMOS Sensor Camera," in Proc. 63rd IEEE International Midwest Symposium on Circuits and Systems (MWSCAS), virtual conference, Aug. 2020.</li>
+        <li>R. Sato, R. Sasaki, N. Suga, and T. Furukawa, "Recognition of Multiple Speaker's Emotion using Continuous Emotion Intensity and Creating Emotional Speech Dataset for Deep Learning," in Proc. NCSP, Hawaii, USA, Feb. to Mar. 2020.</li>
+        <li>T. Maeda, N. Suga, and T. Furukawa, "PAPR Performance of CI-OFDM with Totally Blind Channel Estimation," in Proc. NCSP, Hawaii, USA, Feb. to Mar. 2020.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, T. Higashimori, and Y. Suzuki, "Estimation of Probability Density Function Using Multi-bandwidth Kernel Density Estimation for WLAN Throughput," in Proc. International Conference on Artificial Intelligence in Information and Communication (ICAIIC), Fukuoka, Japan, Feb. 2020.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, T. Higashimori, and Y. Suzuki, "Prediction of QoS Outage Probability for Wireless Communication in Factory Environments," in Proc. IEEE IINTEC, Gammarth, Tunisia, Dec. 2019.</li>
+        <li>N. Suga, R. Sasaki, and T. Furukawa, "Pilot Allocation for Iteration Reduction of Channel Estimation Using MF-Based Interpolation," in Proc. ISPACS, Taipei, Taiwan, Dec. 2019. <span class="award-mark">[Best Paper Award, First Place]</span></li>
+        <li>J. Webber, N. Suga, S. Ano, Y. Hou, A. Mehbodniya, T. Higashimori, K. Yano, and Y. Suzuki, "Machine Learning-based RSSI Prediction in Factory Environments," in Proc. Asia-Pacific Conference on Communications (APCC), Ho Chi Minh City, Vietnam, Nov. 2019.</li>
+        <li>N. Suga, R. Sasaki, and T. Furukawa, "Channel Estimation Using Matrix Factorization Based Interpolation for OFDM Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Fall), Hawaii, USA, Sept. 2019.</li>
+        <li>J. Webber, N. Suga, A. Mehbodniya, K. Yano, and T. Kumagai, "Study on Fading Prediction for Automated Guided Vehicle Using Probabilistic Neural Network," in Proc. Asia-Pacific Microwave Conference (APMC), Kyoto, Japan, Nov. 2018.</li>
+        <li>N. Suga, N. Egashira, K. Yano and T. Kumagai, "Frame error rate prediction for WLAN systems with multiband simultaneous transmission," in Proc. IEEE 28th Annual International Symposium on Personal, Indoor, and Mobile Radio Communications (PIMRC), Montreal, QC, Oct. 2017.</li>
+        <li>N. Suga and T. Furukawa, "SINR estimation based on subspace projection," in Proc. NCSP, Hawaii, USA, Mar. 2016.</li>
+        <li>N. Suga and T. Furukawa, "On biased projection method," in Proc. 8th International Conference on Signal Processing and Communication Systems (ICSPCS), Gold Coast, QLD, 2014.</li>
+        <li>N. Suga and T. Furukawa, "Iterative updating of oblique projection matrix," in Proc. ISPACS, Okinawa, Japan, Nov. 2013.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Inter-block interference removing based on oblique projection for single carrier block transmission system without CP," in Proc. RISP NCSP, Hawaii, USA, Mar. 2013.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Blind multiuser detector based on oblique projection for asynchronous MC-CDMA system without channel estimation," in Proc. 12th IEEE International Symposium on Signal Processing and Information Technology (ISSPIT), Ho Chi Minh City, Vietnam, Dec. 2012.</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-domestic">
+      <ol class="pub-list">
+        <li>初澤 正悠，菅 宣理，"IRSで形成される動的なRadio Mapの推定" 電子情報通信学会2026年総合大会講演論文集，B-18-08，2026年3月．</li>
+        <li>原 拓海，菅 宣理，"深層学習を用いた伝搬路推定におけるデジタルツインにより生成したCIRの有効性検証" 電子情報通信学会2026年総合大会講演論文集，B-18-08，2026年3月．</li>
+        <li>藤沼 俊介，菅 宣理，"Wi-FiのCFR波形形状と電力情報を用いた屋内壁位置推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>溝上 光輝，菅 宣理，"ディジタルツインを用いたブラインドチャネル推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>竹嶋 奏人，菅 宣理，"環境情報を入力とした深層学習によるマルチパス電波伝搬特性推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>市川 樹，菅 宣理，"屋内伝搬環境のデジタルツインに基づくAoA推定のための到来波数推定手法" 電子情報通信学会 SRW研究会 2026年1月13日．</li>
+        <li>郷園 諒太郎，菅 宣理，"RGB画像に対する素材分類とLiDAR点群を用いた電波伝搬推定" 電子情報通信学会 SRW研究会 2026年1月13日．</li>
+        <li>三浦 大晴，菅 宣理，"遺伝的アルゴリズムを用いたIRS上のアクティブ素子配置の決定に関する研究" 電子情報通信学会 RCS 研究会 2025年11月13日．</li>
+        <li>小井土 樹，菅 宣理，"ガウス過程回帰によるニアフィールド環境下のIRSチャネル推定" 電子情報通信学会 RCS 研究会 2025年11月13日．</li>
+        <li>堺 洋人，佐々木 亮平，松本 一総，菅 宣理，"深層学習に基づくブラインド伝搬路推定のための次元削減に関する研究" 電子情報通信学会 SRW研究会 2025年7月24日．</li>
+        <li>松本 一総，堺 洋人，佐々木 亮平，菅 宣理，"OFDM通信における深層学習に基づく完全ブラインド伝搬路推定に関する一検討" 電子情報通信学会 SRW研究会 2025年7月24日．</li>
+        <li>澤海 洋人，菅 宣理，"ディジタルツインによる伝搬路の事前情報を用いたOFDM方式における信号同期" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．<span class="award-mark">[学生奨励賞受賞]</span></li>
+        <li>福田 哲哉，菅 宣理，"IRSを用いた無線通信における部分空間法を用いたSemi-Blind伝搬路推定" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．</li>
+        <li>吉田 侑生，菅 宣理，"IRS-assistedシステムにおけるサンプリング間隔で反射係数を切り替える高速ブラインド推定" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRSを用いた無線通信システムにおけるガウス過程回帰による伝搬路予測のためのカーネル関数に関する一検討" 信学技報, vol. 123, no. 434, RCS2023-286, pp. 140-145, 2024年3月.</li>
+        <li>吉田 尚矢，菅 宣理，"RGB-D画像に対する素材分類ディープラーニングを用いたRadio Map推定" 電子情報通信学会2024年総合大会講演論文集，B-18-03，2024年3月．</li>
+        <li>土屋 瑛梧，菅 宣理，"IRSを用いた無線通信システムにおけるガウス過程回帰による伝搬路推定間隔の動的制御" 電子情報通信学会2024年総合大会講演論文集，B-18-02，2024年3月．</li>
+        <li>椎木 亨泰，雨車 和憲，土屋 文彦，菅 宣理，"TransformerベースのInpaintingによるRISを用いる通信方式のためのデータ補間手法の提案" 電子情報通信学会2024年総合大会講演論文集，D-11A-38，2024年3月．</li>
+        <li>土屋 文彦，菅 宣理，雨車 和憲，藤沢 匡哉，"IRSを用いる無線通信システムにおけるアクティブ素子配置についての検討" 電子情報通信学会2024年総合大会講演論文集，B-5B-29，2024年3月．</li>
+        <li>市川 樹，菅 宣理，"屋内伝搬環境のデジタルツインに基づくベイズ型チャネル推定" 信学技報, vol. 123, no. 340, RCS2023-210, pp. 31-36, 2024年1月.</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRS assisted 無線通信システムにおける伝搬路予測による伝搬路推定オーバーヘッドの削減" 信学技報, vol. 123, no. 75, SRW2023-4, pp. 19-24, 2023年6月.（依頼講演）</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRS制御における伝搬路変動の影響の評価" 電子情報通信学会2023年総合大会講演論文集 B-18-1 2023年3月．</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRSを用いる無線通信システムにおけるガウス過程回帰による伝搬路予測" 信学技報 122(401) 13-18 2023年3月．</li>
+        <li>佐藤 光哉，菅 宣理，前田 慶博，"イメージセンサおよび三次元再構成を用いた屋内電波伝搬シミュレーションの自動化に向けた検討" 信学技報 122(12) 55-57 2022年5月．</li>
+        <li>ウェバー ジュリアン，矢野 一人，菅 宣理，鈴木 義規，"Investigation on Beamforming for IRS-Assisted MIMO-OFDM Communication using Machine Learning," 信学技報, vol. 121, no. 392, SR2021-86, pp. 6-13, 2022年3月.</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，鈴木 義規，"IRS-Assisted MIMO-OFDM方式における伝搬路行列の予測に関する検討," 信学技報, vol. 121, no. 392, SR2021-85, pp. 1-5, 2022年3月.</li>
+        <li>土屋 文彦，菅 宣理，雨車 和憲，藤沢 匡哉，"無線端末の移動を考慮したLSTMによるIRSの反射パターン予測," 電子情報通信学会2022年総合大会講演論文集，B-5-28，2022年3月．</li>
+        <li>菅 宣理，佐々木 亮平，"ランク最小化に基づく電波マップシミュレーションの高速化," 第34回 回路とシステムワークショップ，2021年8月．（査読あり）</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，新居 英志，東森 敏英，鈴木 義規，"行列補完を用いた欠損のある受信電力系列の復元と将来値の予測" 信学技報, vol. 121, no. 15, CQ2021-12, pp. 47-52, 2021年5月.（依頼講演）</li>
+        <li>新居 英志，菅 宣理，東森 敏英，矢野 一人，鈴木 義規，"製造現場における無線通信異常の原因推定および位置推定手法に関する検討," 信学技報, vol. 120, no. 238, SR2020-31, pp. 56-63, 2020年11月.</li>
+        <li>矢野 一人，菅 宣理，ウェバー ジュリアン，侯 亜飛，新居 英志，東森 敏英，鈴木 義規，"工場環境における所要通信品質非充足予測技術の研究開発," 信学技報, vol. 120, no. 204, RCS2020-108, pp. 86-91, 2020年10月.（依頼講演）</li>
+        <li>大澤 充，菅 宣理，古川 利博，"電波伝搬における3次元信号強度データのテンソル補間," 電子情報通信学会2020年ソサイエティ大会講演論文集，B-1-12，2020年9月．</li>
+        <li>久保田 悟，雨車 和憲，田中 勇帆，菅 宣理，古川 利博，"NMRS信号のスパース性に基づいたデノイジング手法の提案," 信学技報, vol. 119, no. 377, SIP2019-87, pp. 221-225, 2020年1月.</li>
+        <li>菅 宣理，東森 敏英，矢野 一人，ウェバー ジュリアン，鈴木 義規，"QoSの予測誤差分布を用いた所要QoS非充足確率推定," 革新的無線通信技術に関する横断型研究会 MIKA 2019, 2019年10月．</li>
+        <li>前田 拓史，菅 宣理，古川 利博，"非対称16QAMを用いたブラインドチャネル推定法," 第32回 回路とシステムワークショップ，pp. 270-271，2019年8月．（査読あり）</li>
+        <li>菅 宣理，東森 敏英，矢野 一人，ウェバー ジュリアン，江頭 直人，鈴木 義規，"機械学習による無線アプリケーションのQoS非充足確率予測," 電子情報通信学会2019年総合大会講演論文集，B-17-7，2019年3月．</li>
+        <li>丸田 一輝，中山 悠，田中 健，安永 遼真，菅 宣理，本田 一暁，久野 大介，安 昌俊，"ビークルセルネットワークの無線フロントホールにおけるビーム追従法," 第81回全国大会講演論文集 2019(1) 55-56 2019年2月28日．</li>
+        <li>菅 宣理，ウェバー ジュリアン，江頭 直人，矢野 一人，鈴木 義規，熊谷 智明，"PNNとアノマリ成分推定による未学習時系列データの予測手法," 電子情報通信学会2018年ソサイエティ大会講演論文集，2018年9月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，鈴木 義規，"機械学習に基づく異常検知を用いた無線通信品質の劣化予兆検知" 革新的無線通信技術に関する横断型研究会 MIKA 2018, 2018年9月．<span class="award-mark">[若手ポスター賞]</span></li>
+        <li>J. Webber, N. Suga, N. Egashira, K. Yano, and T. Kumagai, "Probabilistic neural network for predicting channel of unmanned ground vehicle in smart factory," 2018 信学総大，B-17-17，2018年3月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"狭空間における無線通信システムのアノマリ検出に関する一検討," 電子情報通信学会2018年総合大会講演論文集，B-17-18，2018年3月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"クラスタリングに基づくアノマリ検出法の無線環境変動パターンへの適用," 信学技報, vol. 117, no. 457, SR2017-135, pp. 125-129, 2018年2月.</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"パンクチャド畳み込み符号を適用した無線LANのFER予測," 電子情報通信学会2017年ソサイエティ大会講演論文集，2017年9月．</li>
+        <li>江頭 直人，矢野 一人，菅 宣理，熊谷 智明，"複数周波数帯同時伝送無線LANの送信電力・伝送レート制御方式," 電子情報通信学会2017年総合大会講演論文集，B-5-143，2017年3月．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"IEEE 802.11 無線LANに適した畳み込み符号化OFDM伝送のビット誤り率予測," 信学技報，IT2016-125，2017年3月．</li>
+        <li>菅 宣理，古川 利博，"OFDM通信における完全ブラインドチャネル推定とそのCramer Raoの下界," 電子情報通信学会2016年ソサイエティ大会講演論文集，2016年9月．</li>
+        <li>菅 宣理，古川 利博，"OFDM方式における対数の期待値を用いたブラインドチャネル推定法の提案," 第28回信号処理シンポジウム，2013年11月．</li>
+        <li>菅 宣理，小河 誠巳，古川 利博，"非同期MC-CDMA方式における斜交射影を用いたブラインド検出器," 第27回信号処理シンポジウム，2012年11月．</li>
+        <li>菅 宣理，小河 誠巳，古川 利博，"同期DS-CDMA通信における斜交射影アルゴリズムを用いたブラインド検出器," 信学技報, vol. 111, no. 404, RCS2011-274, pp. 43-48, 2012年1月．</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-patent">
+      <ol class="pub-list">
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"データ補間処理方法、データ補間処理装置、プログラム、学習処理装置、および、予測処理装置"，特願2020-190715．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"データ補間処理方法、データ補間処理装置、プログラム、学習処理装置、および、予測処理装置"，特願2020-190717．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2020-022540，出願日2020年2月13日．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2020-018514，出願日2020年2月6日．</li>
+        <li>菅 宣理，東森 敏英，ウェバー ジュリアン，矢野 一人，江頭 直人，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2019-029078，出願日2019年2月21日．</li>
+        <li>菅 宣理，東森 敏英，ウェバー ジュリアン，矢野 一人，江頭 直人，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2019-029062，出願日2019年2月21日．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"無線状況予測装置、無線状況予測方法、および、プログラム"，特願2018-054975，出願日2018年3月22日．</li>
+        <li>ウェバー ジュリアン，菅 宣理，メーボドニヤ アボルファズル，江頭 直人，矢野 一人，熊谷 智明，"無線状況予測装置、無線状況予測方法、および、プログラム"，特願2018-042747，出願日2018年3月9日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、無線通信装置および無線通信システム"，特願2017-218555，出願日2017年11月13日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、無線通信装置および無線通信システム"，特願2017-218237，出願日2017年11月13日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-217268，出願日2017年11月10日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-217085，出願日2017年11月10日．</li>
+        <li>江頭 直人，菅 宣理，矢野 一人，熊谷 智明，"無線通信装置および無線通信方法"，特願2017-215784，出願日2017年11月8日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-098189，出願日2017年5月17日．</li>
+        <li>江頭 直人，菅 宣理，矢野 一人，熊谷 智明，"無線通信装置および無線通信方法"，特願2017-170052，出願日2017年9月5日．</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-award">
+      <h3 style="font-family:var(--serif);font-size:16px;color:var(--green-deep);margin-bottom:12px"><span class="jp">教員の受賞</span><span class="en">Faculty Awards</span></h3>
+      <ol class="pub-list" style="margin-bottom:34px">
+        <li><span class="jp">2023年3月 研究奨励賞，電子情報通信学会 短距離無線通信研究会</span><span class="en">Mar. 2023 — Research Encouragement Award, IEICE Technical Committee on Short Range Wireless Communications</span></li>
+        <li><span class="jp">2020年11月 Best Paper Award, O-COCOSDA</span><span class="en">Nov. 2020 — Best Paper Award, O-COCOSDA</span></li>
+        <li><span class="jp">2019年12月 Best Paper Award, First Place, ISPACS</span><span class="en">Dec. 2019 — Best Paper Award, First Place, ISPACS</span></li>
+        <li><span class="jp">2018年9月 若手ポスター賞，革新的無線通信技術に関する横断型研究会（MIKA）</span><span class="en">Sep. 2018 — Young Researcher Poster Award, MIKA</span></li>
+      </ol>
+      <h3 style="font-family:var(--serif);font-size:16px;color:var(--green-deep);margin-bottom:12px"><span class="jp">研究指導学生の受賞</span><span class="en">Student Awards</span></h3>
+      <ol class="pub-list">
+        <li><span class="jp">2026年3月 Student Paper Award, 小井土 樹（NCSP'26）</span><span class="en">Mar. 2026 — Student Paper Award, I. Koido (NCSP'26)</span></li>
+        <li><span class="jp">2026年3月 Student Paper Award, 野澤 柊（NCSP'26）</span><span class="en">Mar. 2026 — Student Paper Award, S. Nozawa (NCSP'26)</span></li>
+        <li><span class="jp">2025年3月 学生奨励賞，澤海 洋人（電子情報通信学会 第30回 東京支部学生会研究発表会）</span><span class="en">Mar. 2025 — Student Encouragement Award, H. Somi (30th IEICE Tokyo Branch Student Workshop)</span></li>
+        <li><span class="jp">2023年3月 Student Paper Award, 土屋 瑛梧（NCSP'23）</span><span class="en">Mar. 2023 — Student Paper Award, Y. Tsuchiya (NCSP'23)</span></li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-grant">
+      <ol class="pub-list">
+        <li><span class="jp">電子通信普及財団 研究助成「深層ブラインド推定によるPilot-Freeな超多素子システムの実現」研究代表者，2,952千円，2026年度．</span><span class="en">Telecommunications Advancement Foundation Research Grant, "Pilot-Free Massive-Element Systems via Deep Blind Estimation," PI, FY2026.</span></li>
+        <li><span class="jp">日本学術振興会 科研費 基盤研究（B）「光・無線統合センシングによる動的ディジタルツインと無線通信の相互最適化」研究代表者，14,200千円，2025〜2027年度．</span><span class="en">JSPS KAKENHI Grant-in-Aid for Scientific Research (B), "Mutual Optimization of Dynamic Digital Twins and Wireless Communications via Integrated Optical-Wireless Sensing," PI, FY2025-2027.</span></li>
+        <li><span class="jp">環境省 環境研究総合推進費・委託費【問題対応型】「気候変動の暑熱リスクに対する学校建築の緩和と適応のシナジー」研究分担者，2022〜2024年度．</span><span class="en">Environment Research and Technology Development Fund (Ministry of the Environment), Co-Investigator, FY2022-2024.</span></li>
+        <li><span class="jp">日本学術振興会 科研費 若手研究「IRS assisted system におけるセミブラインド伝搬路推定」研究代表者，2,400千円，2022〜2024年度．</span><span class="en">JSPS KAKENHI Grant-in-Aid for Early-Career Scientists, "Semi-Blind Channel Estimation in IRS-Assisted Systems," PI, FY2022-2024.</span></li>
+        <li><span class="jp">国立研究開発法人情報通信研究機構 Beyond 5G 研究開発促進事業「Intelligent Reflecting Surface によるプロアクティブな無線空間制御と耐干渉型空間多重伝送技術の研究開発」研究分担者，2021年度〜．</span><span class="en">NICT Beyond 5G R&amp;D Promotion Project, Co-Investigator, FY2021-.</span></li>
+        <li><span class="jp">電子通信普及財団 研究助成「行列補間による電波伝搬シミュレーションの高速化」研究代表者，1,840千円，2021年度．</span><span class="en">Telecommunications Advancement Foundation Research Grant, "Accelerating Radio Propagation Simulation via Matrix Interpolation," PI, FY2021.</span></li>
+        <li><span class="jp">総務省 電波資源拡大のための研究開発「狭空間における周波数稠密利用のための周波数有効利用技術の研究開発」研究分担者，2017〜2020年度．</span><span class="en">MIC R&amp;D for Expansion of Radio Wave Resources, Co-Investigator, FY2017-2020.</span></li>
+        <li><span class="jp">総務省 電波資源拡大のための研究開発「複数周波数帯域の同時利用による周波数利用効率向上技術の研究開発」研究分担者，2016〜2018年度．</span><span class="en">MIC R&amp;D for Expansion of Radio Wave Resources, Co-Investigator, FY2016-2018.</span></li>
+        <li><span class="jp">東京理科大学 特定研究助成金 研究科学生助成金，研究代表者，500千円，平成26年度．</span><span class="en">Tokyo University of Science Special Research Grant, PI, FY2014.</span></li>
+      </ol>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand"><span class="jp">芝浦工業大学 無線信号処理研究室（菅研究室）</span><span class="en">Wireless Signal Processing Laboratory, Shibaura Institute of Technology</span></div>
+    <small>&copy; 2026 Wireless Signal Processing Laboratory, Shibaura Institute of Technology.</small>
+  </div>
+</footer>
+</body>
+</html>
