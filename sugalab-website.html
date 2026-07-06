@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>芝浦工業大学 無線信号処理研究室（菅研究室）| SIT Wireless Signal Processing Laboratory</title>
+<meta name="description" content="芝浦工業大学 無線信号処理研究室（菅研究室）。最適化や機械学習等の数学的ツールを使って次世代の無線通信を実現する技術について研究しています。">
+<style>
+  :root{
+    --ink:#23272b;
+    --paper:#f7f6f2;
+    --green:#0f5045;        /* 深緑（芝浦工大カラー系） */
+    --green-deep:#0a3a32;
+    --mist:#8a949b;
+    --line:#d9d6ce;
+    --accent:#8a6d3b;       /* 金茶 */
+    --max:1100px;
+    --serif:"Shippori Mincho","Yu Mincho","YuMincho","Hiragino Mincho ProN","MS PMincho",serif;
+    --sans:"Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.9;font-size:15.5px;letter-spacing:.02em}
+
+  html[data-lang="ja"] .en{display:none}
+  html[data-lang="en"] .jp{display:none}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,246,242,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .header-inner{max-width:var(--max);margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .brand{font-family:var(--serif);font-weight:600;font-size:16.5px;color:var(--green);text-decoration:none;letter-spacing:.05em;line-height:1.3}
+  .brand small{display:block;font-size:9.5px;color:var(--mist);letter-spacing:.14em;font-family:var(--sans)}
+  nav{display:flex;align-items:center;gap:24px}
+  nav a{color:var(--ink);text-decoration:none;font-size:13.5px;letter-spacing:.08em;position:relative;padding:4px 0;white-space:nowrap}
+  nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--green);transition:width .25s}
+  nav a:hover::after,nav a:focus-visible::after{width:100%}
+  .lang-btn{border:1px solid var(--green);background:none;color:var(--green);font-size:12px;padding:5px 14px;cursor:pointer;letter-spacing:.1em;border-radius:2px;font-family:var(--sans);transition:background .2s,color .2s}
+  .lang-btn:hover{background:var(--green);color:#fff}
+  .menu-btn{display:none;background:none;border:none;font-size:22px;color:var(--green);cursor:pointer}
+
+  /* hero with radio-wave arcs */
+  .hero{position:relative;max-width:var(--max);margin:0 auto;padding:96px 24px 90px;overflow:hidden}
+  .hero-arcs{position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:520px;height:520px;pointer-events:none;opacity:.55}
+  .hero-arcs circle{fill:none;stroke:var(--line);stroke-width:1}
+  .hero-arcs .dot{fill:var(--accent);stroke:none}
+  .hero-eyebrow{font-size:11.5px;letter-spacing:.26em;color:var(--accent);margin-bottom:22px}
+  .hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(27px,4.4vw,42px);line-height:1.65;color:var(--green-deep);letter-spacing:.04em;margin-bottom:26px;position:relative}
+  .hero p{max-width:36em;color:#454b50;font-size:15px;position:relative}
+  .hero-meta{margin-top:30px;font-size:12.5px;color:var(--mist);letter-spacing:.1em;border-top:1px solid var(--line);display:inline-block;padding-top:12px;position:relative}
+
+  section{max-width:var(--max);margin:0 auto;padding:70px 24px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:38px;border-bottom:1px solid var(--line);padding-bottom:14px}
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:25px;color:var(--green-deep);letter-spacing:.08em}
+  .sec-head span{font-size:11px;letter-spacing:.25em;color:var(--mist)}
+
+  /* news */
+  .news-list{list-style:none}
+  .news-list li{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:13px 4px;border-bottom:1px dotted var(--line);align-items:baseline;font-size:14.5px}
+  .news-date{font-size:13px;color:var(--mist);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .news-award{color:var(--accent);font-weight:600}
+  .news-more{display:none}
+  .news-list.expanded .news-more{display:grid}
+  .more-btn{margin-top:22px;border:1px solid var(--green);background:none;color:var(--green);font-size:13px;padding:9px 30px;cursor:pointer;letter-spacing:.12em;border-radius:2px;font-family:var(--sans);transition:background .2s,color .2s}
+  .more-btn:hover{background:var(--green);color:#fff}
+
+  /* research */
+  .research-item{display:grid;grid-template-columns:1fr 380px;gap:36px;align-items:center;background:#fff;border:1px solid var(--line);padding:36px;margin-bottom:28px}
+  .research-item:nth-child(even){grid-template-columns:380px 1fr}
+  .research-item:nth-child(even) .r-text{order:2}
+  .research-item:nth-child(even) .r-img{order:1}
+  .r-text .r-num{font-family:var(--serif);color:var(--accent);font-size:12.5px;letter-spacing:.22em;margin-bottom:14px}
+  .r-text h3{font-family:var(--serif);font-size:20px;color:var(--green-deep);margin-bottom:14px;line-height:1.6;font-weight:600}
+  .r-text p{font-size:14px;color:#454b50}
+  .r-img img{width:100%;height:auto;display:block;border:1px solid var(--line)}
+
+  /* members */
+  .member-group{margin-bottom:34px}
+  .member-group h3{font-size:13px;letter-spacing:.22em;color:var(--mist);margin-bottom:14px;font-weight:600;border-left:3px solid var(--green);padding-left:10px}
+  .member-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+  .m-card{background:#fff;border:1px solid var(--line);padding:15px 18px}
+  .m-card .m-name{font-family:var(--serif);font-size:15.5px;color:var(--green-deep);font-weight:600}
+  .m-card .m-role{font-size:11.5px;color:var(--mist);margin-top:2px;letter-spacing:.06em}
+  .faculty-card{background:#fff;border:1px solid var(--line);padding:26px 30px;margin-bottom:34px;display:flex;gap:26px;align-items:baseline;flex-wrap:wrap}
+  .faculty-card .f-name{font-family:var(--serif);font-size:22px;color:var(--green-deep);font-weight:600}
+  .faculty-card .f-role{font-size:13px;color:var(--mist);letter-spacing:.08em}
+
+  /* publications tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+  .tab-btn{border:1px solid var(--line);background:#fff;color:var(--ink);font-size:12.5px;padding:8px 18px;cursor:pointer;letter-spacing:.08em;border-radius:2px;font-family:var(--sans);transition:all .2s}
+  .tab-btn:hover{border-color:var(--green)}
+  .tab-btn.active{background:var(--green);border-color:var(--green);color:#fff}
+  .tab-panel{display:none}
+  .tab-panel.active{display:block}
+  .pub-list{list-style:none;counter-reset:pub}
+  .pub-list li{padding:12px 4px 12px 46px;border-bottom:1px dotted var(--line);position:relative;font-size:13.5px;line-height:1.75}
+  .pub-list li::before{counter-increment:pub;content:"["counter(pub)"]";position:absolute;left:2px;color:var(--accent);font-family:var(--serif);font-size:12.5px}
+  .pub-list .award-mark{color:var(--accent);font-weight:600}
+  .pub-note{font-size:12.5px;color:var(--mist);margin-bottom:16px}
+  .plain-list{list-style:none}
+  .plain-list li{padding:12px 4px;border-bottom:1px dotted var(--line);font-size:13.5px;line-height:1.75}
+
+  /* access */
+  .access-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+  .access-block h3{font-family:var(--serif);font-size:17px;color:var(--green-deep);margin-bottom:14px;font-weight:600}
+  .access-block p{font-size:14px;color:#454b50}
+  .map-frame{margin-top:18px;border:1px solid var(--line);width:100%;height:240px}
+
+  footer{background:var(--green-deep);color:#c9d4d0;margin-top:40px}
+  .footer-inner{max-width:var(--max);margin:0 auto;padding:42px 24px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:20px}
+  .footer-inner .f-brand{font-family:var(--serif);color:#fff;font-size:16px;letter-spacing:.08em}
+  .footer-inner small{font-size:11.5px;letter-spacing:.06em}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
+  @media (max-width:860px){
+    nav{position:fixed;inset:66px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;border-bottom:1px solid var(--line);display:none;padding:8px 0;align-items:stretch}
+    nav.open{display:flex}
+    nav a{padding:14px 24px;width:100%}
+    .menu-btn{display:block}
+    .lang-btn{margin:12px 24px}
+    .hero{padding:64px 24px}
+    .hero-arcs{opacity:.25}
+    .research-item,.research-item:nth-child(even){grid-template-columns:1fr}
+    .research-item:nth-child(even) .r-text{order:1}
+    .research-item:nth-child(even) .r-img{order:2}
+    .access-grid{grid-template-columns:1fr}
+    .news-list li{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="brand" href="#top">
+      <span class="jp">無線信号処理研究室</span><span class="en">Wireless Signal Processing Lab</span>
+      <small><span class="jp">芝浦工業大学（菅研究室）</span><span class="en">Shibaura Institute of Technology — Suga Lab</span></small>
+    </a>
+    <button class="menu-btn" aria-label="menu" onclick="document.querySelector('nav').classList.toggle('open')">☰</button>
+    <nav>
+      <a href="#news"><span class="jp">ニュース</span><span class="en">News</span></a>
+      <a href="#research"><span class="jp">研究内容</span><span class="en">Research</span></a>
+      <a href="#members"><span class="jp">メンバー</span><span class="en">Members</span></a>
+      <a href="#publications"><span class="jp">研究業績</span><span class="en">Publications</span></a>
+      <a href="#access"><span class="jp">アクセス</span><span class="en">Access</span></a>
+      <button class="lang-btn" onclick="toggleLang()"><span class="jp">English</span><span class="en">日本語</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <svg class="hero-arcs" viewBox="0 0 520 520" aria-hidden="true">
+      <circle cx="440" cy="260" r="60"/>
+      <circle cx="440" cy="260" r="120"/>
+      <circle cx="440" cy="260" r="180"/>
+      <circle cx="440" cy="260" r="240"/>
+      <circle cx="440" cy="260" r="300"/>
+      <circle class="dot" cx="440" cy="260" r="4"/>
+    </svg>
+    <p class="hero-eyebrow">SHIBAURA INSTITUTE OF TECHNOLOGY — WIRELESS SIGNAL PROCESSING LABORATORY</p>
+    <h1>
+      <span class="jp">数理の力で、<br>次世代の無線通信を拓く。</span>
+      <span class="en">Advancing next-generation wireless<br>through mathematical tools.</span>
+    </h1>
+    <p>
+      <span class="jp">無線信号処理研究室（菅研究室）は2022年4月に発足した研究室です。最適化や機械学習等の数学的ツールを使って、次世代の無線通信を実現する技術について研究しています。</span>
+      <span class="en">The Wireless Signal Processing Laboratory (Suga Lab) was established in April 2022. We study technologies for realizing next-generation wireless communications using mathematical tools such as optimization and machine learning.</span>
+    </p>
+    <p class="hero-meta"><span class="jp">芝浦工業大学 研究棟12F 12M32 ｜ 2022年発足</span><span class="en">Research Bldg. 12F, Room 12M32, Shibaura Institute of Technology | Est. 2022</span></p>
+  </div>
+
+  <section id="news" class="reveal">
+    <div class="sec-head"><h2><span class="jp">ニュース</span><span class="en">News</span></h2><span>NEWS</span></div>
+    <ul class="news-list" id="newsList">
+      <li><span class="news-date">2026.05.23</span><span><span class="jp">学術誌 IEEE Access に採録されました（東京工科大学との共同研究）。</span><span class="en">A paper was accepted for publication in IEEE Access (joint work with Tokyo University of Technology).</span></span></li>
+      <li><span class="news-date">2026.03.24</span><span><span class="jp">学術誌 IEEE Access に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted for publication in IEEE Access (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li><span class="news-date">2026.03.13</span><span><span class="jp">B4 野澤さん、渡辺さんの研究が国際会議 IEEE VTC-Spring に採録されました。</span><span class="en">Research by Nozawa and Watanabe (B4) was accepted at IEEE VTC-Spring.</span></span></li>
+      <li><span class="news-date">2026.03.10</span><span><span class="jp">電気通信普及財団 研究助成に採択されました。</span><span class="en">A research grant from the Telecommunications Advancement Foundation was awarded.</span></span></li>
+      <li><span class="news-date">2026.03.10</span><span><span class="jp">B4 初澤さん、原さんが電子情報通信学会 総合大会にて研究発表を行いました。</span><span class="en">Hatsuzawa and Hara (B4) presented at the IEICE General Conference.</span></span></li>
+      <li><span class="news-date">2026.03.07</span><span><span class="jp">M2 藤沼さん、B4 竹嶋さん、溝上さんがIEICE東京支部学生会研究発表会で研究発表を行いました。</span><span class="en">Fujinuma (M2), Takeshima and Mizokami (B4) presented at the IEICE Tokyo Branch Student Workshop.</span></span></li>
+      <li><span class="news-date">2026.02.28</span><span class="news-award"><span class="jp">B4 安藤さん、小井土さん、野澤さん、渡辺さんが国際会議 NCSP'26 にて研究発表を行い、小井土さん、野澤さんが Student Paper Award を受賞しました。</span><span class="en">Ando, Koido, Nozawa and Watanabe (B4) presented at NCSP'26; Koido and Nozawa received Student Paper Awards.</span></span></li>
+      <li><span class="news-date">2026.01.13</span><span><span class="jp">M2 市川さん、郷園さんが電子情報通信学会 SRW 研究会にて研究発表を行いました。</span><span class="en">Ichikawa and Gozono (M2) presented at the IEICE SRW Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.11.12</span><span><span class="jp">B4 小井土さん、三浦さんが電子情報通信学会 RCS 研究会にて研究発表を行いました。</span><span class="en">Koido and Miura (B4) presented at the IEICE RCS Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.11.11</span><span><span class="jp">M2 岡部さんの研究が国際会議 IEEE CCNC に採録されました。</span><span class="en">Research by Okabe (M2) was accepted at IEEE CCNC.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.10.08</span><span><span class="jp">M1 澤海さんの研究が国際会議 ISPACS に採録されました。</span><span class="en">Research by Somi (M1) was accepted at ISPACS.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.08.11</span><span><span class="jp">国際会議 IEEE TENCON に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted at IEEE TENCON (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li class="news-more"><span class="news-date">2025.07.24</span><span><span class="jp">M1 堺さん、B4 松本さんが電子情報通信学会 SRW 研究会で発表しました。</span><span class="en">Sakai (M1) and Matsumoto (B4) presented at the IEICE SRW Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.03.29</span><span><span class="jp">学術誌 IEEE Wireless Communications Letters に採録されました（電通大との共同研究）。</span><span class="en">A paper was accepted in IEEE Wireless Communications Letters (joint work with UEC).</span></span></li>
+      <li class="news-more"><span class="news-date">2025.03.01</span><span class="news-award"><span class="jp">B4 澤海さん、福田さん、吉田さんがIEICE東京支部学生会研究発表会で研究発表を行い、澤海さんが学生奨励賞を受賞しました。</span><span class="en">Somi, Fukuda and Yoshida (B4) presented at the IEICE Tokyo Branch Student Workshop; Somi received the Student Encouragement Award.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.02.28</span><span><span class="jp">日本学術振興会 基盤研究（B）に内定しました。</span><span class="en">A JSPS Grant-in-Aid for Scientific Research (B) was informally awarded.</span></span></li>
+      <li class="news-more"><span class="news-date">2025.02.28</span><span><span class="jp">B4 板垣さん、堺さんが国際会議 NCSP'25 にて研究発表を行いました。</span><span class="en">Itagaki and Sakai (B4) presented at NCSP'25.</span></span></li>
+      <li class="news-more"><span class="news-date">2024.12.25</span><span><span class="jp">学術誌 IEEE Access に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted in IEEE Access (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li class="news-more"><span class="news-date">2024.09.26</span><span><span class="jp">学術誌 IEEE Access に採録されました（（株）ATR・岡山大との共同研究）。</span><span class="en">A paper was accepted in IEEE Access (joint work with ATR and Okayama University).</span></span></li>
+      <li class="news-more"><span class="news-date">2024.09.10</span><span><span class="jp">国際会議 IEEE TENCON に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted at IEEE TENCON (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li class="news-more"><span class="news-date">2024.07.30</span><span><span class="jp">国際会議 IEEE GCCE に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted at IEEE GCCE (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li class="news-more"><span class="news-date">2024.04.30</span><span><span class="jp">学術誌 IEICE Communications Express に採録されました（（株）ATR・岡山大との共同研究）。</span><span class="en">A paper was accepted in IEICE Communications Express (joint work with ATR and Okayama University).</span></span></li>
+      <li class="news-more"><span class="news-date">2024.03.15</span><span><span class="jp">菅が電子情報通信学会 RCS 研究会にて研究発表を行いました。</span><span class="en">Prof. Suga presented at the IEICE RCS Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2024.03.07</span><span><span class="jp">B4 土屋さん、吉田さんが電子情報通信学会 総合大会にて研究発表を行いました。</span><span class="en">Tsuchiya and Yoshida (B4) presented at the IEICE General Conference.</span></span></li>
+      <li class="news-more"><span class="news-date">2024.03.05</span><span><span class="jp">国際会議 IEEE VTC-Spring に採録されました。</span><span class="en">A paper was accepted at IEEE VTC-Spring.</span></span></li>
+      <li class="news-more"><span class="news-date">2024.02.28</span><span><span class="jp">B4 中村さん、市川さん、藤沼さんが国際会議 NCSP'24 にて研究発表を行いました。</span><span class="en">Nakamura, Ichikawa and Fujinuma (B4) presented at NCSP'24.</span></span></li>
+      <li class="news-more"><span class="news-date">2024.01.18</span><span><span class="jp">B4 市川さんが電子情報通信学会 RCS 研究会にて研究発表を行いました。</span><span class="en">Ichikawa (B4) presented at the IEICE RCS Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2023.06.12</span><span><span class="jp">菅が電子情報通信学会 SRW 研究会にて依頼講演を行いました。</span><span class="en">Prof. Suga gave an invited talk at the IEICE SRW Technical Committee.</span></span></li>
+      <li class="news-more"><span class="news-date">2023.04.13</span><span><span class="jp">学術誌 IEICE Communications Express に採録されました（（株）ATR・岡山大との共同研究）。</span><span class="en">A paper was accepted in IEICE Communications Express (joint work with ATR and Okayama University).</span></span></li>
+      <li class="news-more"><span class="news-date">2023.04.10</span><span><span class="jp">学術誌 Journal of Signal Processing に採録されました（東京理科大・工学院大との共同研究）。</span><span class="en">A paper was accepted in the Journal of Signal Processing (joint work with Tokyo University of Science and Kogakuin University).</span></span></li>
+      <li class="news-more"><span class="news-date">2023.03.29</span><span><span class="jp">ホームページを公開しました。</span><span class="en">Our website was launched.</span></span></li>
+    </ul>
+    <button class="more-btn" id="newsMoreBtn" onclick="toggleNews()"><span class="jp">過去のニュースを見る</span><span class="en">Show older news</span></button>
+  </section>
+
+  <section id="research" class="reveal">
+    <div class="sec-head"><h2><span class="jp">研究内容</span><span class="en">Research</span></h2><span>RESEARCH</span></div>
+
+    <div class="research-item">
+      <div class="r-text">
+        <div class="r-num">RESEARCH TOPIC — 01</div>
+        <h3><span class="jp">Intelligent Reflecting Surface 制御に関する研究</span><span class="en">Intelligent Reflecting Surface (IRS) Control</span></h3>
+        <p>
+          <span class="jp">周波数に余裕のあるミリ波等の高い周波数の電波は直進性が強く、見通し外の伝搬が期待できないという問題点があります。これを解決するため、反射特性を動的に変化可能な受動反射素子で構成される電磁波反射体（IRS: Intelligent Reflecting Surface）により、見通し外でも安定した通信を実現する技術についての検討を進めています。</span>
+          <span class="en">High-frequency radio waves such as millimeter waves offer abundant spectrum but propagate in nearly straight lines, making non-line-of-sight communication difficult. To solve this, we study techniques that use an Intelligent Reflecting Surface (IRS) — a reflector composed of passive elements whose reflection characteristics can be dynamically controlled — to realize stable communication even in non-line-of-sight conditions.</span>
+        </p>
+      </div>
+      <div class="r-img">
+        <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUA3osLde4IKbFUNpK_fuZPBJaPB_2gDlW6br8cvqbaRp350dG9YF8mBSP3fwpC1uE1Nv9K9zjZjCGgnweG55rZ-1NL3l2PXdbLDgDXoi-GNKmwpn9yXo9SJPLoLNABxe9UHV4UMA-DDQOc6IFv3QnTT5ivPsMR3e66zL7dtQJNWqucpdt6AUdFOm4QsrRvRP1S1V5W4rqePPdaaooIK-AaM0OIAf0yuV3b-9mb7=w1280" alt="IRS制御の研究イメージ" loading="lazy">
+      </div>
+    </div>
+
+    <div class="research-item">
+      <div class="r-text">
+        <div class="r-num">RESEARCH TOPIC — 02</div>
+        <h3><span class="jp">Radio Map 推定に関する研究</span><span class="en">Radio Map Estimation</span></h3>
+        <p>
+          <span class="jp">エリア内の受信電力の地図を Radio Map といい、基地局の敷設・無線端末位置推定・ドローンの経路設定等の様々な応用が検討されています。限られた観測や画像情報などから、最適化・機械学習・深層学習の手法を使って効率的に Radio Map を推定する技術について研究しています。</span>
+          <span class="en">A radio map is a map of received signal power within an area, with applications such as base station deployment, wireless terminal localization, and drone path planning. We study techniques for efficiently estimating radio maps from limited observations and visual information, using optimization, machine learning, and deep learning.</span>
+        </p>
+      </div>
+      <div class="r-img">
+        <img src="https://lh3.googleusercontent.com/sitesv/AA5AbUDz1B7nCkcqLrH1FMmVRO-lkOPVP3HO1jd1TTeYIN9ARD3hvFGtGoSNWNhrLomJRJgCJMYpq3KwxyJluYZphog_nZAVE2MQm55zyQf8AT8dzihkCoJQvSTFZCFUZeCaHa90wS7pAfql79lybDhjzzRaE3UiQjBLFhY1T0LkAjiyqHDhsWjsZWrMkEu_ZFDAXZ_6MiClajaYmydNOvI8QNMOdqokngpMkLgX6aj-ejY=w1280" alt="Radio Map推定の研究イメージ" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="members" class="reveal">
+    <div class="sec-head"><h2><span class="jp">メンバー</span><span class="en">Members</span></h2><span>MEMBERS</span></div>
+
+    <div class="faculty-card">
+      <div>
+        <div class="f-name"><span class="jp">菅 宣理</span><span class="en">Norisato Suga</span></div>
+        <div class="f-role"><span class="jp">准教授</span><span class="en">Associate Professor</span></div>
+      </div>
+      <div style="font-size:13.5px;color:#454b50">
+        <span class="jp">専門：無線通信、信号処理、機械学習</span>
+        <span class="en">Research interests: wireless communications, signal processing, machine learning</span>
+      </div>
+    </div>
+
+    <div class="member-group">
+      <h3><span class="jp">修士2年（M2）</span><span class="en">MASTER'S STUDENTS — M2</span></h3>
+      <div class="member-grid">
+        <div class="m-card"><div class="m-name"><span class="jp">堺 洋人</span><span class="en">Hiroto Sakai</span></div><div class="m-role">M2</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">平木 聡真</span><span class="en">Soma Hiraki</span></div><div class="m-role">M2</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">澤海 洋人</span><span class="en">Hiroto Somi</span></div><div class="m-role">M2</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">宮崎 立瑞</span><span class="en">Ritsuki Miyazaki</span></div><div class="m-role">M2</div></div>
+      </div>
+    </div>
+
+    <div class="member-group">
+      <h3><span class="jp">修士1年（M1）</span><span class="en">MASTER'S STUDENTS — M1</span></h3>
+      <div class="member-grid">
+        <div class="m-card"><div class="m-name"><span class="jp">安藤 行慧</span><span class="en">Yukie Ando</span></div><div class="m-role">M1</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">松本 一総</span><span class="en">Kazusa Matsumoto</span></div><div class="m-role">M1</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">渡辺 空</span><span class="en">Sora Watanabe</span></div><div class="m-role">M1</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">野澤 柊</span><span class="en">Shu Nozawa</span></div><div class="m-role">M1</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">三浦 大晴</span><span class="en">Taisei Miura</span></div><div class="m-role">M1</div></div>
+      </div>
+    </div>
+
+    <div class="member-group">
+      <h3><span class="jp">学部4年（B4）</span><span class="en">UNDERGRADUATES — B4</span></h3>
+      <div class="member-grid">
+        <div class="m-card"><div class="m-name"><span class="jp">山本 琢磨</span><span class="en">Takuma Yamamoto</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">川野 拓海</span><span class="en">Takumi Kawano</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">斎藤 洸河</span><span class="en">Koga Saito</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">矢野 健太郎</span><span class="en">Kentaro Yano</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">清水 貴範</span><span class="en">Takanori Shimizu</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">久保田 結子</span><span class="en">Yuiko Kubota</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">林 邦生</span><span class="en">Kunio Hayashi</span></div><div class="m-role">B4</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">久見瀬 航希</span><span class="en">Koki Kumise</span></div><div class="m-role">B4</div></div>
+      </div>
+    </div>
+
+    <div class="member-group">
+      <h3><span class="jp">学部3年（B3）</span><span class="en">UNDERGRADUATES — B3</span></h3>
+      <div class="member-grid">
+        <div class="m-card"><div class="m-name"><span class="jp">南 泰至</span><span class="en">Taishi Minami</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">宗像 鈴花</span><span class="en">Suzuka Munakata</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">實川 駿介</span><span class="en">Shunsuke Jitsukawa</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">船戸 俊輔</span><span class="en">Shunsuke Funato</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">小野寺 黎</span><span class="en">Rei Onodera</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">小原 奈都美</span><span class="en">Natsumi Ohara</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">池田 拓馬</span><span class="en">Takuma Ikeda</span></div><div class="m-role">B3</div></div>
+        <div class="m-card"><div class="m-name"><span class="jp">奥野 聖央</span><span class="en">Seo Okuno</span></div><div class="m-role">B3</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications" class="reveal">
+    <div class="sec-head"><h2><span class="jp">研究業績</span><span class="en">Publications</span></h2><span>PUBLICATIONS</span></div>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" onclick="showTab(event,'journal')">Journal Papers</button>
+      <button class="tab-btn" onclick="showTab(event,'conf')"><span class="jp">国際会議</span><span class="en">Int'l Conferences</span></button>
+      <button class="tab-btn" onclick="showTab(event,'domestic')"><span class="jp">国内発表</span><span class="en">Domestic Talks</span></button>
+      <button class="tab-btn" onclick="showTab(event,'patent')"><span class="jp">特許</span><span class="en">Patents</span></button>
+      <button class="tab-btn" onclick="showTab(event,'award')"><span class="jp">受賞</span><span class="en">Awards</span></button>
+      <button class="tab-btn" onclick="showTab(event,'grant')"><span class="jp">研究費</span><span class="en">Grants</span></button>
+    </div>
+
+    <div class="tab-panel active" id="tab-journal">
+      <ol class="pub-list">
+        <li>N. Suga, R. Sasaki, and K. Matsumoto, "Blind Channel Estimation Using an Image-to-Image Translation Network for OFDM Systems," IEEE Access. (Accepted). [2024 IF: 3.6]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Integration of CSI and Camera Image for Indoor Wireless Localization," IEEE Access. (Accepted). [2024 IF: 3.6]</li>
+        <li>N. Suga, N. Yoshida, R. Gozono, Y. Maeda, and K. Sato, "RGB-D Sensor-Aided Radio Map Estimation Using Materials Classification," IEEE Wireless Communications Letters, vol. 14, no. 6, pp. 1811-1815, Jun. 2025. [2024 IF: 5.5]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Active Element Arrangement for Deep Learning-Based CSI Prediction in IRS-Assisted Systems," IEEE Access, vol. 13, pp. 2829-2843, Dec. 2024. [2024 IF: 3.6]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "Image-Driven Reflection Pattern Selection for Standalone IRS Control," IEICE Communications Express, vol. 13, no. 12, pp. 517-520, Dec. 2024. [2024 IF: 0.3]</li>
+        <li>Y. Hou, K. Yano, N. Suga, J. Webber, S. Denno, and T. Sakano, "MUSIC Spectrum Based Interference Detection, Localization and Interference Arrival Prediction for mmWave IRS-MIMO System," IEEE Access, vol. 12, pp. 142592-142605, Oct. 2024. [2024 IF: 3.6]</li>
+        <li>N. Suga, K. Yano, Y. Hou, and T. Sakano, "On Hyperparameter Determination for GPR-Based Channel Prediction in IRS-Assisted Wireless Communication Systems," IEICE Communications Express, vol. 13, no. 8, pp. 315-318, Aug. 2024. [2024 IF: 0.3]</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "IRS Reflection Pattern Prediction Considering Receiver's Moving Speed," Journal of Signal Processing, vol. 27, no. 4, pp. 107-110, July 2023.</li>
+        <li>N. Suga, K. Yano, Y. Hou, and T. Sakano, "Study on Channel Prediction in IRS-Assisted Wireless Communication Systems," IEICE Communications Express, vol. 12, no. 7, pp. 374-378, July 2023. [2023 IF: 0.4]</li>
+        <li>N. Suga, Y. Maeda, and K. Sato, "Indoor Radio Map Construction via Ray Tracing With RGB-D Sensor-Based 3D Reconstruction: Concept and Experiments in WLAN Systems," IEEE Access, vol. 11, pp. 24863-24874, Mar. 2023. [2023 IF: 3.4]</li>
+        <li>M. Osawa and N. Suga, "Acceleration of Tensor Interpolation-Based Radio Map Estimation," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E106.A, no. 9, pp. 1263-1267, Sep. 2023. [2023 IF: 0.4]</li>
+        <li>N. Suga and R. Sasaki, "Ray Tracing Acceleration using Rank Minimization for Radio Map Simulation," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E105.A, no. 8, pp. 1157-1161, Aug. 2022. [2022 IF: 0.5]</li>
+        <li>J. Webber, K. Yano, N. Suga, Y. Hou, E. Nii, T. Higashimori, A. Mehbodniya, and Y. Suzuki, "Study on WLAN Interference Identification using Deep Learning for Factory Environments," Journal of Communications, vol. 16, no. 7, pp. 276-283, July 2021.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, E. Nii, T. Higashimori, and Y. Suzuki, "MF-Based RSS Interpolation for Wireless Environment Prediction," IEEE Wireless Communications Letters, vol. 10, no. 7, pp. 1464-1468, July 2021. [2021 IF: 5.3]</li>
+        <li>M. Osawa, N. Suga, and T. Furukawa, "Accelerating Ray Tracing Simulation using Tensor Completion for 3D Radio Map," IEICE Communications Express, vol. 10, no. 5, pp. 283-288, May 2021.</li>
+        <li>N. Suga and T. Furukawa, "Scalar Ambiguity Estimation Based on Maximum Likelihood Criteria for Totally Blind Channel Estimation in Block Transmission Systems," IEEE Transactions on Wireless Communications, vol. 20, no. 4, pp. 2608-2620, Apr. 2021. [2021 IF: 7.016]</li>
+        <li>N. Suga, R. Sasaki, M. Osawa, and T. Furukawa, "Ray Tracing Acceleration using Total Variation Norm Minimization for Radio Map Simulation," IEEE Wireless Communications Letters, vol. 10, no. 3, pp. 522-526, Mar. 2021. [2021 IF: 5.3]</li>
+        <li>J. Webber, N. Suga, A. Mehbodniya, K. Yano, and Y. Suzuki, "Study on Channel Prediction for Automated Guided Vehicle using a Probabilistic Neural Network," IEICE Communications Express, vol. 8, no. 8, pp. 311-317, 2019.</li>
+        <li>N. Suga and T. Furukawa, "Signal power estimation based on orthogonal projection and oblique projection," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E99-A, no. 12, pp. 2571-2575, 2016. [2016 IF: 0.274]</li>
+        <li>N. Suga and T. Furukawa, "On recursive representation of optimum projection matrix," IEICE Transactions on Fundamentals of Electronics, Communications and Computer Sciences, vol. E99-A, no. 1, pp. 412-416, 2016. [2016 IF: 0.274]</li>
+        <li>菅 宣理，古川 利博，"OFDM方式における信号空間ダイアグラムのシンボル配置を考慮したブラインドチャネル推定法，"電子情報通信学会論文誌B，vol. J98-B，no. 4，pp. 383-396，2015.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Blind channel estimation based on expected value of logarithmic received signal for OFDM systems," IEICE Communications Express, vol. 2, no. 1, pp. 1-6, 2013.</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-conf">
+      <ol class="pub-list">
+        <li>S. Watanabe, N. Suga, "Sparse Radio Map-based Layout Tomographic Reconstruction," Proc. IEEE Vehicular Technology Conference (VTC-Spring), Nice, France, Jun. 2026.</li>
+        <li>S. Nozawa, N. Suga, "Radio Map-to-Beamforming Weight Mapping via Conditional Invertible Neural Networks," Proc. IEEE Vehicular Technology Conference (VTC-Spring), Nice, France, Jun. 2026.</li>
+        <li>Y. Ando, N. Suga, "Model Compression for Deep Learning-Based Channel Estimation Using Knowledge Distillation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026.</li>
+        <li>S. Watanabe, N. Suga, "Estimation of Indoor Structural Information Using Radio Maps," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026.</li>
+        <li>S. Nozawa, N. Suga, "Digital Twin-Aided Beamforming Using Conditional Invertible Neural Networks," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026. <span class="award-mark">[Student Paper Award]</span></li>
+        <li>I. Koido, N. Suga, "Gaussian Process Regression for IRS Channel Estimation in Near-Field Environments," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2026. <span class="award-mark">[Student Paper Award]</span></li>
+        <li>K. Okabe, N. Suga, "Projection Approximation Subspace Tracking-Based Channel Estimation for IRS Control," Proc. IEEE Consumer Communications &amp; Networking Conference (CCNC), Las Vegas, NV, USA, 2026, pp. 1-2.</li>
+        <li>H. Somi, N. Suga, "Digital Twin-Aided Fingerprinting for Device-Free RF Sensing," International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), Bandung, Indonesia, 2025, pp. 1-6.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Fisheye Camera-Aided Standalone IRS Control for Transmitter Beamforming," Proc. IEEE Region 10 Conference (TENCON), Kota Kinabalu, Malaysia, 2025, pp. 469-473.</li>
+        <li>H. Sakai, N. Suga, "Study on Blind Channel Estimation Based on Deep Learning for M-PSK Signal," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Pulau Pinang, Malaysia, Feb. to Mar. 2025.</li>
+        <li>T. Itagaki, N. Suga, "Wireless Terminal Localization Using Digital Twin of Indoor Wireless Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Pulau Pinang, Malaysia, Feb. to Mar. 2025.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Active Element Arrangement and Prediction Model for Channel Estimation in IRS-Assisted Systems," in Proc. IEEE Region 10 Conference (TENCON), Dec. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "IRS Controlling Method With Machine Learning Based on Position Information," in Proc. IEEE Global Conference on Consumer Electronics (GCCE), Oct. 2024.</li>
+        <li>N. Suga, "Blind Channel Estimation for Reconfigurable Intelligent Surface Assisted OFDM Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Spring), Singapore, Jun. 2024.</li>
+        <li>S. Fujinuma, N. Suga, "USRP-Based CIR Measurement System and Evaluation of CIR Replica from Digital Twin of Wireless Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>I. Ichikawa, N. Suga, "Digital Twin-Aided Bayesian Channel Estimation in Indoor Propagation Environment," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>S. Nakamura, N. Suga, "Training Received Point Reduction Using Predictive Variance of Gaussian Process Regression in Radio Map Estimation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "Prediction Model for IRS Channel Estimation Using CNN with Frequency Domain," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2024.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, M. Fujisawa, "IRS Reflection Pattern Prediction Considering Receiver's Moving Speed," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2023.</li>
+        <li>M. Osawa, N. Suga, Y. Tsuchiya, M. Fujisawa, "3D indoor positioning system using tensor rank minimization based radio map interpolation," Proc. International Workshop on Nonlinear Circuits, Communications and Signal Processing (NCSP), Hawaii, USA, Feb. to Mar. 2023.</li>
+        <li>Y. Hou, K. Yano, N. Suga, S. Denno, and T. Sakano, "MUSIC Spectrum Based Interference Detection and Localization for mmWave RIS-MIMO System," Proc. 25th International Conference on Advanced Communication Technology (ICACT), Pyeongchang, Republic of Korea, Feb. 2023.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, K. Yano, T. Suzuki, M. Fujisawa, "WLAN throughput prediction using deep learning with throughput, RSS, and COR," Proc. International Symposium on Intelligent Signal Processing and Communication Systems (ISPACS), Penang, Malaysia, Nov. 2022.</li>
+        <li>Y. Tsuchiya, N. Suga, K. Uruma, and M. Fujisawa, "LSTM-based Spectral Efficiency Prediction by Capturing Wireless Terminal Movement in IRS-Assisted Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Spring), Helsinki, Finland, Jun. 2022.</li>
+        <li>Y. Hou, K. Yano, N. Suga, J. Webber, E. Nii, T. Higashimori, S. Denno, Y. Suzuki, "A Study of Time-series Data Prediction using Probabilistic Neural Networks and Convolutional Neural Networks," in Proc. IEEE 23rd International Conference on Advanced Communications Technology (ICACT), virtual conference, Feb. 2021.</li>
+        <li>R. Sato, R. Sasaki, N. Suga, and T. Furukawa, "Creation and Analysis of Emotional Speech Database for Multiple Emotions Recognition," in Proc. O-COCOSDA, virtual conference, Nov. 2020. <span class="award-mark">[Best Paper Award]</span></li>
+        <li>N. Suga, R. Sasaki, Y. Tanaka, K. Uruma, and T. Takahashi, "LLR Calculation for On-Off Keying in Screen to Camera Communication Systems," in Proc. 63rd IEEE International Midwest Symposium on Circuits and Systems (MWSCAS), virtual conference, Aug. 2020.</li>
+        <li>Y. Tanaka, K. Uruma, R. Sasaki, N. Suga, and T. Takahashi, "Frame Recovery Method for Screen to Camera Communication Using CMOS Sensor Camera," in Proc. 63rd IEEE International Midwest Symposium on Circuits and Systems (MWSCAS), virtual conference, Aug. 2020.</li>
+        <li>R. Sato, R. Sasaki, N. Suga, and T. Furukawa, "Recognition of Multiple Speaker's Emotion using Continuous Emotion Intensity and Creating Emotional Speech Dataset for Deep Learning," in Proc. NCSP, Hawaii, USA, Feb. to Mar. 2020.</li>
+        <li>T. Maeda, N. Suga, and T. Furukawa, "PAPR Performance of CI-OFDM with Totally Blind Channel Estimation," in Proc. NCSP, Hawaii, USA, Feb. to Mar. 2020.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, T. Higashimori, and Y. Suzuki, "Estimation of Probability Density Function Using Multi-bandwidth Kernel Density Estimation for WLAN Throughput," in Proc. International Conference on Artificial Intelligence in Information and Communication (ICAIIC), Fukuoka, Japan, Feb. 2020.</li>
+        <li>N. Suga, K. Yano, J. Webber, Y. Hou, T. Higashimori, and Y. Suzuki, "Prediction of QoS Outage Probability for Wireless Communication in Factory Environments," in Proc. IEEE IINTEC, Gammarth, Tunisia, Dec. 2019.</li>
+        <li>N. Suga, R. Sasaki, and T. Furukawa, "Pilot Allocation for Iteration Reduction of Channel Estimation Using MF-Based Interpolation," in Proc. ISPACS, Taipei, Taiwan, Dec. 2019. <span class="award-mark">[Best Paper Award, First Place]</span></li>
+        <li>J. Webber, N. Suga, S. Ano, Y. Hou, A. Mehbodniya, T. Higashimori, K. Yano, and Y. Suzuki, "Machine Learning-based RSSI Prediction in Factory Environments," in Proc. Asia-Pacific Conference on Communications (APCC), Ho Chi Minh City, Vietnam, Nov. 2019.</li>
+        <li>N. Suga, R. Sasaki, and T. Furukawa, "Channel Estimation Using Matrix Factorization Based Interpolation for OFDM Systems," in Proc. IEEE Vehicular Technology Conference (VTC-Fall), Hawaii, USA, Sept. 2019.</li>
+        <li>J. Webber, N. Suga, A. Mehbodniya, K. Yano, and T. Kumagai, "Study on Fading Prediction for Automated Guided Vehicle Using Probabilistic Neural Network," in Proc. Asia-Pacific Microwave Conference (APMC), Kyoto, Japan, Nov. 2018.</li>
+        <li>N. Suga, N. Egashira, K. Yano and T. Kumagai, "Frame error rate prediction for WLAN systems with multiband simultaneous transmission," in Proc. IEEE 28th Annual International Symposium on Personal, Indoor, and Mobile Radio Communications (PIMRC), Montreal, QC, Oct. 2017.</li>
+        <li>N. Suga and T. Furukawa, "SINR estimation based on subspace projection," in Proc. NCSP, Hawaii, USA, Mar. 2016.</li>
+        <li>N. Suga and T. Furukawa, "On biased projection method," in Proc. 8th International Conference on Signal Processing and Communication Systems (ICSPCS), Gold Coast, QLD, 2014.</li>
+        <li>N. Suga and T. Furukawa, "Iterative updating of oblique projection matrix," in Proc. ISPACS, Okinawa, Japan, Nov. 2013.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Inter-block interference removing based on oblique projection for single carrier block transmission system without CP," in Proc. RISP NCSP, Hawaii, USA, Mar. 2013.</li>
+        <li>N. Suga, T. Ogawa, and T. Furukawa, "Blind multiuser detector based on oblique projection for asynchronous MC-CDMA system without channel estimation," in Proc. 12th IEEE International Symposium on Signal Processing and Information Technology (ISSPIT), Ho Chi Minh City, Vietnam, Dec. 2012.</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-domestic">
+      <ol class="pub-list">
+        <li>初澤 正悠，菅 宣理，"IRSで形成される動的なRadio Mapの推定" 電子情報通信学会2026年総合大会講演論文集，B-18-08，2026年3月．</li>
+        <li>原 拓海，菅 宣理，"深層学習を用いた伝搬路推定におけるデジタルツインにより生成したCIRの有効性検証" 電子情報通信学会2026年総合大会講演論文集，B-18-08，2026年3月．</li>
+        <li>藤沼 俊介，菅 宣理，"Wi-FiのCFR波形形状と電力情報を用いた屋内壁位置推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>溝上 光輝，菅 宣理，"ディジタルツインを用いたブラインドチャネル推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>竹嶋 奏人，菅 宣理，"環境情報を入力とした深層学習によるマルチパス電波伝搬特性推定" 電子情報通信学会 第31回 東京支部学生会研究発表会 2025年3月7日．</li>
+        <li>市川 樹，菅 宣理，"屋内伝搬環境のデジタルツインに基づくAoA推定のための到来波数推定手法" 電子情報通信学会 SRW研究会 2026年1月13日．</li>
+        <li>郷園 諒太郎，菅 宣理，"RGB画像に対する素材分類とLiDAR点群を用いた電波伝搬推定" 電子情報通信学会 SRW研究会 2026年1月13日．</li>
+        <li>三浦 大晴，菅 宣理，"遺伝的アルゴリズムを用いたIRS上のアクティブ素子配置の決定に関する研究" 電子情報通信学会 RCS 研究会 2025年11月13日．</li>
+        <li>小井土 樹，菅 宣理，"ガウス過程回帰によるニアフィールド環境下のIRSチャネル推定" 電子情報通信学会 RCS 研究会 2025年11月13日．</li>
+        <li>堺 洋人，佐々木 亮平，松本 一総，菅 宣理，"深層学習に基づくブラインド伝搬路推定のための次元削減に関する研究" 電子情報通信学会 SRW研究会 2025年7月24日．</li>
+        <li>松本 一総，堺 洋人，佐々木 亮平，菅 宣理，"OFDM通信における深層学習に基づく完全ブラインド伝搬路推定に関する一検討" 電子情報通信学会 SRW研究会 2025年7月24日．</li>
+        <li>澤海 洋人，菅 宣理，"ディジタルツインによる伝搬路の事前情報を用いたOFDM方式における信号同期" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．<span class="award-mark">[学生奨励賞受賞]</span></li>
+        <li>福田 哲哉，菅 宣理，"IRSを用いた無線通信における部分空間法を用いたSemi-Blind伝搬路推定" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．</li>
+        <li>吉田 侑生，菅 宣理，"IRS-assistedシステムにおけるサンプリング間隔で反射係数を切り替える高速ブラインド推定" 電子情報通信学会 第30回 東京支部学生会研究発表会 2025年3月．</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRSを用いた無線通信システムにおけるガウス過程回帰による伝搬路予測のためのカーネル関数に関する一検討" 信学技報, vol. 123, no. 434, RCS2023-286, pp. 140-145, 2024年3月.</li>
+        <li>吉田 尚矢，菅 宣理，"RGB-D画像に対する素材分類ディープラーニングを用いたRadio Map推定" 電子情報通信学会2024年総合大会講演論文集，B-18-03，2024年3月．</li>
+        <li>土屋 瑛梧，菅 宣理，"IRSを用いた無線通信システムにおけるガウス過程回帰による伝搬路推定間隔の動的制御" 電子情報通信学会2024年総合大会講演論文集，B-18-02，2024年3月．</li>
+        <li>椎木 亨泰，雨車 和憲，土屋 文彦，菅 宣理，"TransformerベースのInpaintingによるRISを用いる通信方式のためのデータ補間手法の提案" 電子情報通信学会2024年総合大会講演論文集，D-11A-38，2024年3月．</li>
+        <li>土屋 文彦，菅 宣理，雨車 和憲，藤沢 匡哉，"IRSを用いる無線通信システムにおけるアクティブ素子配置についての検討" 電子情報通信学会2024年総合大会講演論文集，B-5B-29，2024年3月．</li>
+        <li>市川 樹，菅 宣理，"屋内伝搬環境のデジタルツインに基づくベイズ型チャネル推定" 信学技報, vol. 123, no. 340, RCS2023-210, pp. 31-36, 2024年1月.</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRS assisted 無線通信システムにおける伝搬路予測による伝搬路推定オーバーヘッドの削減" 信学技報, vol. 123, no. 75, SRW2023-4, pp. 19-24, 2023年6月.（依頼講演）</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRS制御における伝搬路変動の影響の評価" 電子情報通信学会2023年総合大会講演論文集 B-18-1 2023年3月．</li>
+        <li>菅 宣理，矢野 一人，侯 亜飛，坂野 寿和，"IRSを用いる無線通信システムにおけるガウス過程回帰による伝搬路予測" 信学技報 122(401) 13-18 2023年3月．</li>
+        <li>佐藤 光哉，菅 宣理，前田 慶博，"イメージセンサおよび三次元再構成を用いた屋内電波伝搬シミュレーションの自動化に向けた検討" 信学技報 122(12) 55-57 2022年5月．</li>
+        <li>ウェバー ジュリアン，矢野 一人，菅 宣理，鈴木 義規，"Investigation on Beamforming for IRS-Assisted MIMO-OFDM Communication using Machine Learning," 信学技報, vol. 121, no. 392, SR2021-86, pp. 6-13, 2022年3月.</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，鈴木 義規，"IRS-Assisted MIMO-OFDM方式における伝搬路行列の予測に関する検討," 信学技報, vol. 121, no. 392, SR2021-85, pp. 1-5, 2022年3月.</li>
+        <li>土屋 文彦，菅 宣理，雨車 和憲，藤沢 匡哉，"無線端末の移動を考慮したLSTMによるIRSの反射パターン予測," 電子情報通信学会2022年総合大会講演論文集，B-5-28，2022年3月．</li>
+        <li>菅 宣理，佐々木 亮平，"ランク最小化に基づく電波マップシミュレーションの高速化," 第34回 回路とシステムワークショップ，2021年8月．（査読あり）</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，新居 英志，東森 敏英，鈴木 義規，"行列補完を用いた欠損のある受信電力系列の復元と将来値の予測" 信学技報, vol. 121, no. 15, CQ2021-12, pp. 47-52, 2021年5月.（依頼講演）</li>
+        <li>新居 英志，菅 宣理，東森 敏英，矢野 一人，鈴木 義規，"製造現場における無線通信異常の原因推定および位置推定手法に関する検討," 信学技報, vol. 120, no. 238, SR2020-31, pp. 56-63, 2020年11月.</li>
+        <li>矢野 一人，菅 宣理，ウェバー ジュリアン，侯 亜飛，新居 英志，東森 敏英，鈴木 義規，"工場環境における所要通信品質非充足予測技術の研究開発," 信学技報, vol. 120, no. 204, RCS2020-108, pp. 86-91, 2020年10月.（依頼講演）</li>
+        <li>大澤 充，菅 宣理，古川 利博，"電波伝搬における3次元信号強度データのテンソル補間," 電子情報通信学会2020年ソサイエティ大会講演論文集，B-1-12，2020年9月．</li>
+        <li>久保田 悟，雨車 和憲，田中 勇帆，菅 宣理，古川 利博，"NMRS信号のスパース性に基づいたデノイジング手法の提案," 信学技報, vol. 119, no. 377, SIP2019-87, pp. 221-225, 2020年1月.</li>
+        <li>菅 宣理，東森 敏英，矢野 一人，ウェバー ジュリアン，鈴木 義規，"QoSの予測誤差分布を用いた所要QoS非充足確率推定," 革新的無線通信技術に関する横断型研究会 MIKA 2019, 2019年10月．</li>
+        <li>前田 拓史，菅 宣理，古川 利博，"非対称16QAMを用いたブラインドチャネル推定法," 第32回 回路とシステムワークショップ，pp. 270-271，2019年8月．（査読あり）</li>
+        <li>菅 宣理，東森 敏英，矢野 一人，ウェバー ジュリアン，江頭 直人，鈴木 義規，"機械学習による無線アプリケーションのQoS非充足確率予測," 電子情報通信学会2019年総合大会講演論文集，B-17-7，2019年3月．</li>
+        <li>丸田 一輝，中山 悠，田中 健，安永 遼真，菅 宣理，本田 一暁，久野 大介，安 昌俊，"ビークルセルネットワークの無線フロントホールにおけるビーム追従法," 第81回全国大会講演論文集 2019(1) 55-56 2019年2月28日．</li>
+        <li>菅 宣理，ウェバー ジュリアン，江頭 直人，矢野 一人，鈴木 義規，熊谷 智明，"PNNとアノマリ成分推定による未学習時系列データの予測手法," 電子情報通信学会2018年ソサイエティ大会講演論文集，2018年9月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，鈴木 義規，"機械学習に基づく異常検知を用いた無線通信品質の劣化予兆検知" 革新的無線通信技術に関する横断型研究会 MIKA 2018, 2018年9月．<span class="award-mark">[若手ポスター賞]</span></li>
+        <li>J. Webber, N. Suga, N. Egashira, K. Yano, and T. Kumagai, "Probabilistic neural network for predicting channel of unmanned ground vehicle in smart factory," 2018 信学総大，B-17-17，2018年3月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"狭空間における無線通信システムのアノマリ検出に関する一検討," 電子情報通信学会2018年総合大会講演論文集，B-17-18，2018年3月．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"クラスタリングに基づくアノマリ検出法の無線環境変動パターンへの適用," 信学技報, vol. 117, no. 457, SR2017-135, pp. 125-129, 2018年2月.</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"パンクチャド畳み込み符号を適用した無線LANのFER予測," 電子情報通信学会2017年ソサイエティ大会講演論文集，2017年9月．</li>
+        <li>江頭 直人，矢野 一人，菅 宣理，熊谷 智明，"複数周波数帯同時伝送無線LANの送信電力・伝送レート制御方式," 電子情報通信学会2017年総合大会講演論文集，B-5-143，2017年3月．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"IEEE 802.11 無線LANに適した畳み込み符号化OFDM伝送のビット誤り率予測," 信学技報，IT2016-125，2017年3月．</li>
+        <li>菅 宣理，古川 利博，"OFDM通信における完全ブラインドチャネル推定とそのCramer Raoの下界," 電子情報通信学会2016年ソサイエティ大会講演論文集，2016年9月．</li>
+        <li>菅 宣理，古川 利博，"OFDM方式における対数の期待値を用いたブラインドチャネル推定法の提案," 第28回信号処理シンポジウム，2013年11月．</li>
+        <li>菅 宣理，小河 誠巳，古川 利博，"非同期MC-CDMA方式における斜交射影を用いたブラインド検出器," 第27回信号処理シンポジウム，2012年11月．</li>
+        <li>菅 宣理，小河 誠巳，古川 利博，"同期DS-CDMA通信における斜交射影アルゴリズムを用いたブラインド検出器," 信学技報, vol. 111, no. 404, RCS2011-274, pp. 43-48, 2012年1月．</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-patent">
+      <ol class="pub-list">
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"データ補間処理方法、データ補間処理装置、プログラム、学習処理装置、および、予測処理装置"，特願2020-190715．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"データ補間処理方法、データ補間処理装置、プログラム、学習処理装置、および、予測処理装置"，特願2020-190717．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2020-022540，出願日2020年2月13日．</li>
+        <li>菅 宣理，矢野 一人，ウェバー ジュリアン，侯 亜飛，東森 敏英，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2020-018514，出願日2020年2月6日．</li>
+        <li>菅 宣理，東森 敏英，ウェバー ジュリアン，矢野 一人，江頭 直人，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2019-029078，出願日2019年2月21日．</li>
+        <li>菅 宣理，東森 敏英，ウェバー ジュリアン，矢野 一人，江頭 直人，鈴木 義規，"通信状況予測装置、通信状況予測方法、および、プログラム"，特願2019-029062，出願日2019年2月21日．</li>
+        <li>菅 宣理，ウェバー ジュリアン，東森 敏英，江頭 直人，矢野 一人，熊谷 智明，"無線状況予測装置、無線状況予測方法、および、プログラム"，特願2018-054975，出願日2018年3月22日．</li>
+        <li>ウェバー ジュリアン，菅 宣理，メーボドニヤ アボルファズル，江頭 直人，矢野 一人，熊谷 智明，"無線状況予測装置、無線状況予測方法、および、プログラム"，特願2018-042747，出願日2018年3月9日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、無線通信装置および無線通信システム"，特願2017-218555，出願日2017年11月13日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、無線通信装置および無線通信システム"，特願2017-218237，出願日2017年11月13日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-217268，出願日2017年11月10日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-217085，出願日2017年11月10日．</li>
+        <li>江頭 直人，菅 宣理，矢野 一人，熊谷 智明，"無線通信装置および無線通信方法"，特願2017-215784，出願日2017年11月8日．</li>
+        <li>菅 宣理，江頭 直人，矢野 一人，熊谷 智明，"フレームエラーレート予測装置、それを用いた無線通信装置および無線通信システム"，特願2017-098189，出願日2017年5月17日．</li>
+        <li>江頭 直人，菅 宣理，矢野 一人，熊谷 智明，"無線通信装置および無線通信方法"，特願2017-170052，出願日2017年9月5日．</li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-award">
+      <h3 style="font-family:var(--serif);font-size:16px;color:var(--green-deep);margin-bottom:12px"><span class="jp">教員の受賞</span><span class="en">Faculty Awards</span></h3>
+      <ol class="pub-list" style="margin-bottom:34px">
+        <li><span class="jp">2023年3月 研究奨励賞，電子情報通信学会 短距離無線通信研究会</span><span class="en">Mar. 2023 — Research Encouragement Award, IEICE Technical Committee on Short Range Wireless Communications</span></li>
+        <li><span class="jp">2020年11月 Best Paper Award, O-COCOSDA</span><span class="en">Nov. 2020 — Best Paper Award, O-COCOSDA</span></li>
+        <li><span class="jp">2019年12月 Best Paper Award, First Place, ISPACS</span><span class="en">Dec. 2019 — Best Paper Award, First Place, ISPACS</span></li>
+        <li><span class="jp">2018年9月 若手ポスター賞，革新的無線通信技術に関する横断型研究会（MIKA）</span><span class="en">Sep. 2018 — Young Researcher Poster Award, MIKA</span></li>
+      </ol>
+      <h3 style="font-family:var(--serif);font-size:16px;color:var(--green-deep);margin-bottom:12px"><span class="jp">研究指導学生の受賞</span><span class="en">Student Awards</span></h3>
+      <ol class="pub-list">
+        <li><span class="jp">2026年3月 Student Paper Award, 小井土 樹（NCSP'26）</span><span class="en">Mar. 2026 — Student Paper Award, I. Koido (NCSP'26)</span></li>
+        <li><span class="jp">2026年3月 Student Paper Award, 野澤 柊（NCSP'26）</span><span class="en">Mar. 2026 — Student Paper Award, S. Nozawa (NCSP'26)</span></li>
+        <li><span class="jp">2025年3月 学生奨励賞，澤海 洋人（電子情報通信学会 第30回 東京支部学生会研究発表会）</span><span class="en">Mar. 2025 — Student Encouragement Award, H. Somi (30th IEICE Tokyo Branch Student Workshop)</span></li>
+        <li><span class="jp">2023年3月 Student Paper Award, 土屋 瑛梧（NCSP'23）</span><span class="en">Mar. 2023 — Student Paper Award, Y. Tsuchiya (NCSP'23)</span></li>
+      </ol>
+    </div>
+
+    <div class="tab-panel" id="tab-grant">
+      <ol class="pub-list">
+        <li><span class="jp">電子通信普及財団 研究助成「深層ブラインド推定によるPilot-Freeな超多素子システムの実現」研究代表者，2,952千円，2026年度．</span><span class="en">Telecommunications Advancement Foundation Research Grant, "Pilot-Free Massive-Element Systems via Deep Blind Estimation," PI, FY2026.</span></li>
+        <li><span class="jp">日本学術振興会 科研費 基盤研究（B）「光・無線統合センシングによる動的ディジタルツインと無線通信の相互最適化」研究代表者，14,200千円，2025〜2027年度．</span><span class="en">JSPS KAKENHI Grant-in-Aid for Scientific Research (B), "Mutual Optimization of Dynamic Digital Twins and Wireless Communications via Integrated Optical-Wireless Sensing," PI, FY2025-2027.</span></li>
+        <li><span class="jp">環境省 環境研究総合推進費・委託費【問題対応型】「気候変動の暑熱リスクに対する学校建築の緩和と適応のシナジー」研究分担者，2022〜2024年度．</span><span class="en">Environment Research and Technology Development Fund (Ministry of the Environment), Co-Investigator, FY2022-2024.</span></li>
+        <li><span class="jp">日本学術振興会 科研費 若手研究「IRS assisted system におけるセミブラインド伝搬路推定」研究代表者，2,400千円，2022〜2024年度．</span><span class="en">JSPS KAKENHI Grant-in-Aid for Early-Career Scientists, "Semi-Blind Channel Estimation in IRS-Assisted Systems," PI, FY2022-2024.</span></li>
+        <li><span class="jp">国立研究開発法人情報通信研究機構 Beyond 5G 研究開発促進事業「Intelligent Reflecting Surface によるプロアクティブな無線空間制御と耐干渉型空間多重伝送技術の研究開発」研究分担者，2021年度〜．</span><span class="en">NICT Beyond 5G R&amp;D Promotion Project, Co-Investigator, FY2021-.</span></li>
+        <li><span class="jp">電子通信普及財団 研究助成「行列補間による電波伝搬シミュレーションの高速化」研究代表者，1,840千円，2021年度．</span><span class="en">Telecommunications Advancement Foundation Research Grant, "Accelerating Radio Propagation Simulation via Matrix Interpolation," PI, FY2021.</span></li>
+        <li><span class="jp">総務省 電波資源拡大のための研究開発「狭空間における周波数稠密利用のための周波数有効利用技術の研究開発」研究分担者，2017〜2020年度．</span><span class="en">MIC R&amp;D for Expansion of Radio Wave Resources, Co-Investigator, FY2017-2020.</span></li>
+        <li><span class="jp">総務省 電波資源拡大のための研究開発「複数周波数帯域の同時利用による周波数利用効率向上技術の研究開発」研究分担者，2016〜2018年度．</span><span class="en">MIC R&amp;D for Expansion of Radio Wave Resources, Co-Investigator, FY2016-2018.</span></li>
+        <li><span class="jp">東京理科大学 特定研究助成金 研究科学生助成金，研究代表者，500千円，平成26年度．</span><span class="en">Tokyo University of Science Special Research Grant, PI, FY2014.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="access" class="reveal">
+    <div class="sec-head"><h2><span class="jp">アクセス</span><span class="en">Access</span></h2><span>ACCESS</span></div>
+    <div class="access-grid">
+      <div class="access-block">
+        <h3><span class="jp">所在地</span><span class="en">Location</span></h3>
+        <p>
+          <span class="jp">〒135-8548 東京都江東区豊洲3-7-5<br>芝浦工業大学 豊洲キャンパス<br>研究棟 12F 12M32 菅宣理研究室</span>
+          <span class="en">Research Bldg. 12F, Room 12M32<br>Shibaura Institute of Technology, Toyosu Campus<br>3-7-5 Toyosu, Koto-ku, Tokyo 135-8548, Japan</span>
+        </p>
+        <iframe class="map-frame" src="https://www.google.com/maps?q=%E8%8A%9D%E6%B5%A6%E5%B7%A5%E6%A5%AD%E5%A4%A7%E5%AD%A6%20%E8%B1%8A%E6%B4%B2%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9&output=embed" loading="lazy" title="map" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="access-block">
+        <h3><span class="jp">交通アクセス</span><span class="en">Directions</span></h3>
+        <p>
+          <span class="jp">東京メトロ有楽町線「豊洲駅」より徒歩約7分<br>ゆりかもめ「豊洲駅」より徒歩約7分</span>
+          <span class="en">About 7 min walk from Toyosu Station (Tokyo Metro Yurakucho Line / Yurikamome Line)</span>
+        </p>
+        <h3 style="margin-top:28px"><span class="jp">研究室配属・見学を希望する方へ</span><span class="en">Prospective Students &amp; Visitors</span></h3>
+        <p>
+          <span class="jp">研究室見学や配属に関するご相談は随時受け付けています。菅（准教授）までお気軽にお問い合わせください。</span>
+          <span class="en">Inquiries about lab visits and joining the lab are always welcome. Please feel free to contact Prof. Suga.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="f-brand"><span class="jp">芝浦工業大学 無線信号処理研究室（菅研究室）</span><span class="en">Wireless Signal Processing Laboratory, Shibaura Institute of Technology</span></div>
+    <small>&copy; 2026 Wireless Signal Processing Laboratory, Shibaura Institute of Technology.</small>
+  </div>
+</footer>
+
+<script>
+  function toggleLang(){
+    const html=document.documentElement;
+    const next=html.dataset.lang==="ja"?"en":"ja";
+    html.dataset.lang=next;
+    html.lang=next;
+  }
+  function toggleNews(){
+    const list=document.getElementById("newsList");
+    const btn=document.getElementById("newsMoreBtn");
+    list.classList.toggle("expanded");
+    const open=list.classList.contains("expanded");
+    btn.innerHTML=open
+      ? '<span class="jp">閉じる</span><span class="en">Show less</span>'
+      : '<span class="jp">過去のニュースを見る</span><span class="en">Show older news</span>';
+  }
+  function showTab(e,name){
+    document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.remove("active"));
+    e.currentTarget.classList.add("active");
+    document.getElementById("tab-"+name).classList.add("active");
+  }
+  const io=new IntersectionObserver(es=>{
+    es.forEach(en=>{if(en.isIntersecting){en.target.classList.add("visible");io.unobserve(en.target);}});
+  },{threshold:.06});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+  document.querySelectorAll("nav a").forEach(a=>a.addEventListener("click",()=>document.querySelector("nav").classList.remove("open")));
+</script>
+</body>
+</html>
